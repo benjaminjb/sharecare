@@ -31,6 +31,8 @@ gem 'hirb'
 gem 'pry-byebug', group: [:development, :test]
 gem 'rspec-rails'
 
+# added for security
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
