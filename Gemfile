@@ -34,6 +34,9 @@ gem 'rspec-rails'
 # added for security
 gem 'devise'
 
+# added for design
+gem 'foundation-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

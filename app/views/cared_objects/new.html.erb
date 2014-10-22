@@ -1,0 +1,7 @@
+<% provide(:title, "Create a Caring Team, Step One") %>
+
+<%= form_tag("/cared_objects/", :method => :post, :class => "form") do %>
+  <%= label_tag('cared_objects[name]', "Name:") %>
+  <%= text_field_tag('cared_objects[name]') %>
+  <%= submit_tag "Save Team" %>
+<% end %>

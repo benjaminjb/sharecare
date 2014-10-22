@@ -1,15 +1,35 @@
 Rails.application.routes.draw do
-  get 'teams/index'
 
-  get 'tasks/index'
-
-  get 'notes/index'
-
-  get 'cared_objects/index'
-
-  get 'users/index'
+  root 'users#show'
 
   devise_for :users
+  
+  get "/users/:id", to: "users#show"
+
+  get "/cared_objects/new", to: "cared_objects#new"
+  
+  post "/cared_objects/", to: "cared_objects#create"
+
+  get "/teams/new", to: "teams#new"
+  
+  post "/teams/", to: "teams#create"  
+  
+  get "/teams/:id", to: "teams#show"
+
+  # resources :users 
+  # do
+    # resources :teams do
+    #   resources :tasks
+    #   resources :notes
+    # end
+  # end
+
+  # update to allow custom sign_up page
+  # Not working currently
+  # devise_for :users, :controllers => { registrations: 'registrations' }
+
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

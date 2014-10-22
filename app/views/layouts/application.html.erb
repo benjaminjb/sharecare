@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Sharecare</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "ShareCare" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+  
+    <div class="error_message_center"><%= render "layouts/error" %></div>
+
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
+

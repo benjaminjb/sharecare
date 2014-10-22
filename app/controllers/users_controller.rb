@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
-  def index
+  before_action :authenticate_user! #, :except => [:index]
+  
+  def show
+    @user = User.find(current_user.id)
   end
 end
