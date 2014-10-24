@@ -11,60 +11,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021193439) do
+ActiveRecord::Schema.define(version: 20141023194429) do
 
-  create_table "cared_objects", force: true do |t|
-    t.string   "name"
+  create_table "claims", force: true do |t|
+    t.integer  "task_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "team_id"
   end
 
-  add_index "cared_objects", ["team_id"], name: "index_cared_objects_on_team_id"
+  add_index "claims", ["task_id"], name: "index_claims_on_task_id"
+  add_index "claims", ["user_id"], name: "index_claims_on_user_id"
+
+  create_table "invitations", force: true do |t|
+    t.string   "email"
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "open"
+  end
+
+  add_index "invitations", ["team_id"], name: "index_invitations_on_team_id"
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id"
 
   create_table "notes", force: true do |t|
+    t.integer  "team_id"
     t.integer  "user_id"
     t.datetime "noted_at"
     t.text     "remark"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "cared_object_id"
   end
 
-  add_index "notes", ["cared_object_id"], name: "index_notes_on_cared_object_id"
-
-  create_table "tasks", force: true do |t|
-    t.text     "task"
-    t.boolean  "completed"
-    t.text     "notes"
-    t.datetime "completed_at"
-    t.datetime "deadline"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "cared_object_id"
-    t.integer  "claimed_id"
-  end
-
-  add_index "tasks", ["cared_object_id"], name: "index_tasks_on_cared_object_id"
-
-  create_table "teams", force: true do |t|
+  create_table "rosters", force: true do |t|
+    t.integer  "team_id"
     t.integer  "user_id"
     t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "cared_object_id"
   end
 
-  add_index "teams", ["cared_object_id"], name: "index_teams_on_cared_object_id"
+  add_index "rosters", ["team_id"], name: "index_rosters_on_team_id"
+  add_index "rosters", ["user_id"], name: "index_rosters_on_user_id"
+
+  create_table "tasks", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.text     "task"
+    t.boolean  "completed"
+    t.text     "notes"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.datetime "completed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["team_id"], name: "index_tasks_on_team_id"
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
+
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "email",                  default: "", null: false
     t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -12,8 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
-//= require turbolinks
+//  require jquery-ui add =
+// only require what you need
+// add = require foundation
+//= require best_in_place
+//= require best_in_place.jquery-ui
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundation(); });

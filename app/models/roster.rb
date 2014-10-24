@@ -1,4 +1,4 @@
-class Note < ActiveRecord::Base
+class Roster < ActiveRecord::Base
   belongs_to :team
   belongs_to :user
 end

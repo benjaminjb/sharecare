@@ -1,10 +1,29 @@
+<% provide(:title, "Create a Caring Team") %>
+
+<div>Who would you like to invite to this caring team for <%= @cared_objects.name %>?</div>
+
+<%= form_tag("/invitations/", :method => :post, :class => "form") do %>
+  <%= label_tag('invitation[email]', "Email:") %>
+  <%= text_field_tag('invitation[email]') %>
+  <%= submit_tag "Send Email" %>
+<% end %>
+
+<%= button_to "Back", "index" %>
+
+
+$$$
+
 <% provide(:title, "Create a Caring Team, Step Two") %>
 
-<%= form_tag("/teams/", :method => :post, :class => "form") do %>
-  <%= label_tag('cared_object[name]', "Name:") %>
-  <%= text_field_tag('cared_object[name]') %>
-  <%= submit_tag "Save Team" %>
+<div>Who would you like to invite to this caring team for <%= @cared_objects.name %>?</div>
+
+<%= form_tag("/invitations/", :method => :post, :class => "form") do %>
+  <%= label_tag('invitation[email]', "Email:") %>
+  <%= text_field_tag('invitation[email]') %>
+  <%= submit_tag "Send Email" %>
 <% end %>
 
 
 
+
+<li><%= link_to "Create New Team", "/teams/new" %></li>

@@ -1,7 +1,12 @@
 class Team < ActiveRecord::Base
-  has_many :users
-  has_one :cared_object
-  has_many :tasks, through: :cared_object
-  has_many :notes, through: :cared_object
+
+  has_many :rosters
+  has_many :users, :through => :rosters
   has_many :invitations
+  has_many :tasks
+  has_many :notes
+
+  validates_presence_of :name
 end
+
+

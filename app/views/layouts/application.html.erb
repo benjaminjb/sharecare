@@ -12,10 +12,16 @@
   </head>
 
   <body>
-  
-    <div class="error_message_center"><%= render "layouts/error" %></div>
+
+    <div class="navbar_center"><%= render "layouts/navbar" %></div>
+    <div class="success_message_center"><%= render "layouts/message_center" %></div>
+    
+    <!-- <div class="error_message_center"><%= render "layouts/error" %></div> -->
 
     <%= yield %>
+
+
+    // ADD BUTTON THAT CAN CANCEL ANY MOVE?
     <%= javascript_include_tag "application" %>
   </body>
 </html>

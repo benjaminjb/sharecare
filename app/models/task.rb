@@ -1,3 +1,4 @@
 class Task < ActiveRecord::Base
-  belongs_to :cared_object
+  belongs_to :team
+  belongs_to :user
 end

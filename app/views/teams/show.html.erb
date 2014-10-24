@@ -1,0 +1,48 @@
+Team Page for <%= @team.name %>
+
+<div class="users-panel">
+<% if !@users.empty? %>
+	<ul>Current Users
+	<% @users.each do |other_user| %>
+	<li class="users-panel-active-user">
+		<%= other_user.email %>
+	</li>
+	<% end %>
+	<% @pending.each do |pending_user| %>
+	<li class="users-panel-pending-user">
+		<%= pending_user.email %> PENDING
+	</li>
+	<% end %>
+	</ul>
+<% end %>
+</div>
+	add user panel here
+
+
+<div class="tasks-panel">
+<% if !@tasks.empty? %>
+	<ul>Current Tasks
+	<% @tasks.each do |task| %>
+	<li>
+		<%= task.task %>
+	</li>
+	<% end %>
+	</ul>
+<% end %>
+</div>
+add task panel here
+
+<div class="notes-panel">
+<% if !@notes.empty? %>
+	<ul>Current notes
+	<% @notes.each do |note| %>
+	<li>
+		<%= note.remark %>
+	</li>
+	<% end %>
+	</ul>
+<% end %>
+</div>
+	add notes panel here
+
+<%= button_to "Leave Team", "/teams/#{params[:id]}", :method => :delete, data: { confirm: "Are you sure?" } %>

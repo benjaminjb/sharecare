@@ -1,11 +1,29 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
 
-<ul>
-<% @user.teams.each do |team| %>
-<li><%= link_to team.cared_object.name, "/teams/#{team.cared_object.team_id}" %></li>
+<% if @user.teams %>
+	<ul> Your current teams:
+		<% @user.teams.each do |team| %>
+		<li><%= link_to team.name, "/teams/#{team.id}" %></li>
+		<% end %>
+	</ul>
+<% else %>
+	<ul> No current teams.
+	</ul>
 <% end %>
-</ul>
 
-<li><%= link_to "Create New Team", "/cared_objects/new" %></li>
-<%= button_to "Sign Out", "/users/sign_out", :method => :delete %>
+<% if @pending_invites %>
+	<ul> Your pending teams:
+	<% @pending_invites.each do |invite| %>
+		<li>
+			<%= invite.team.name %>
+      <%= button_to "Accept Invitation", "/invitations/#{invite.id}", :method => :delete %> 
+      <%= button_to "Reject Invitation", "/invitations/#{invite.id}", :method => :put %>
+		</li>
+	<% end %>
+	</ul>
+<% end %>
+
+<%= form_tag("/teams/create", method: "post") do %>
+  <%= label_tag('team[name]', "Name:") %>
+  <%= text_field_tag('team[name]') %>
+  <%= submit_tag("Create New Team") %>
+<% end %>
