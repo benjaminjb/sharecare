@@ -2,7 +2,6 @@ class RostersController < ApplicationController
   before_action :authenticate_user!
 
 
-  end
 
 
   # def new
@@ -14,6 +13,7 @@ class RostersController < ApplicationController
   #   @cared_objects = CaredObject.new(cared_objects_params)
   #   if @cared_objects.save
   #     session[:cared_objects_id] = @cared_objects.id
+  # flash[:message_type] = "success-message"
   #     flash[:message] = "Successfully created #{@cared_objects.name}!"
   #     redirect_to "/teams/new"
   #   else

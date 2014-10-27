@@ -1,0 +1,12 @@
+<div class="small-10 small-centered large-centered columns active-teams">
+	<% if @user.teams %>
+		<ul> Your current teams:
+			<% @user.teams.each do |team| %>
+			<li><%= link_to team.name, "/teams/#{team.id}" %></li>
+			<% end %>
+		</ul>
+	<% else %>
+		<ul> No current teams.
+		</ul>
+	<% end %>
+</div>

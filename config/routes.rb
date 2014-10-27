@@ -10,11 +10,15 @@ Rails.application.routes.draw do
 
   put "/invitations/:id", to: "invitations#update"
 
+  post "/invitations", to: "invitations#create"
+
   get "/teams/:id", to: "teams#show"
 
   post "/teams/", to: "teams#create"
 
   delete "/teams/:id", to: "teams#destroy"
+
+  
 
 
   # get "/cared_objects/new", to: "cared_objects#new"

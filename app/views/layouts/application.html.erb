@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 
     <title><%= content_for?(:title) ? yield(:title) : "ShareCare" %></title>
 
@@ -12,17 +13,25 @@
   </head>
 
   <body>
+  <div class="row clearfix">
+    <div class="small-9 small-centered large-centered columns">
+    <div class="navbar_center"><%#= render "layouts/navbar" %></div>    
+    </div>
+  </div>
 
-    <div class="navbar_center"><%= render "layouts/navbar" %></div>
-    <div class="success_message_center"><%= render "layouts/message_center" %></div>
-    
-    <!-- <div class="error_message_center"><%= render "layouts/error" %></div> -->
+  <div class="row clearfix">
+    <div class="small-9 small-centered large-centered columns">
+    <div class="message_center"><%= render "layouts/message_center" %></div>
+    </div>
+  </div>
 
+  <div class="row main-body-panel-container clearfix">
+    <div class="small-9 small-centered large-centered columns">
     <%= yield %>
-
-
-    // ADD BUTTON THAT CAN CANCEL ANY MOVE?
-    <%= javascript_include_tag "application" %>
+    </div>
+  </div>  
+  
+  <%= javascript_include_tag "application" %>
   </body>
 </html>
 

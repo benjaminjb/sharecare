@@ -3,25 +3,24 @@ class TeamsController < ApplicationController
 
   def create
     team = Team.new(team_params)
+
     if team.save
-      session[:team_id] = team.id
-      flash[:message] = "Successfully created team for #{team.name}!"
-      redirect_to "/teams/#{@team.id}" #show
+      Roster.create(:team_id => team.id, :user_id => current_user.id, :role => "help")
+      flash[:notice] = "Successfully created team for #{team.name}!"
+      redirect_to "/teams/#{team.id}"
     else
-      flash[:message] = @team.errors.messages
-      redirect_to "index"
+      flash[:alert] = "Name can't be blank"
+      redirect_to :back
     end
   end
 
   def show
-    @team = Team.find(params[:id])
+    @team = Team.includes(:tasks, :notes, :invitations).find(params[:id])
+    # .where.not(users: { email: current_user.email }).find(params[:id])
     if @team.users.include?(current_user)
-      @tasks = @team.tasks
-      @notes = @team.notes
-      @pending = @team.invitations
       @users = @team.users.where.not(:email => current_user.email)
     else
-      flash[:message] = "You don't have access to that team."
+      flash[:alert] = "You don't have access to that team."
       redirect_to :back
     end
   end
@@ -32,7 +31,7 @@ class TeamsController < ApplicationController
       roster.destroy
       redirect_to "index"
     else
-      flash[:message] = "You don't have permission to leave this team."
+      flash[:alert] = "You don't have permission to leave this team."
       redirect_to :back
     end
   end
@@ -41,5 +40,4 @@ class TeamsController < ApplicationController
   def team_params
     params.require(:team).permit(:name)
   end
-
 end

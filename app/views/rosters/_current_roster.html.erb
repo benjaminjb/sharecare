@@ -1,0 +1,29 @@
+<div class="users-panel">
+	<% if !@users.empty? %>
+		<ul class="users-panel-active-panel">Current Users
+			<% @users.each do |other_user| %>
+				<li class="users-panel-active-user">
+					<%= other_user.email %>
+				</li>
+			<% end %>
+		</ul>
+		<ul class="users-panel-pending-panel">Pending Users
+			<% @team.invitations.each do |pending_user| %>
+				<li class="users-panel-pending-user">
+					<%= pending_user.email %>
+				</li>
+			<% end %>
+		</ul>
+	<% end %>
+</div>
+
+<div class="add-user-panel">
+	Who would you like to invite to this team for <%= @team.name %>?
+	<%= form_tag("/invitations/", :method => :post, :class => "form") do %>
+	  <%= label_tag('invitation[email]', "Email:") %>
+	  <%= text_field_tag('invitation[email]') %>
+	  <%= submit_tag "Send Invitation" %>
+	<% end %>
+</div>
+
+<%= button_to "Leave Team", "/teams/#{params[:id]}", :method => :delete, data: { confirm: "Are you sure?" } %>

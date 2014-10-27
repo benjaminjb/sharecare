@@ -1,29 +1,17 @@
+<div class="row">
+	<div class="pending-invites-partial"><%= render "invitations/pending_invites" %></div>
+</div>
 
-<% if @user.teams %>
-	<ul> Your current teams:
-		<% @user.teams.each do |team| %>
-		<li><%= link_to team.name, "/teams/#{team.id}" %></li>
+<div class="row">
+	<div class="active-teams-partial"><%= render "teams/active_teams" %></div>
+</div>
+
+<div class="row team-maker">
+	<div class="small-8 small-centered large-centered columns">
+		<%= form_tag("/teams/", method: "post") do %>
+		  <%= label_tag('team[name]', "Name:") %>
+		  <%= text_field_tag('team[name]') %>
+		  <%= submit_tag("Create New Team") %>
 		<% end %>
-	</ul>
-<% else %>
-	<ul> No current teams.
-	</ul>
-<% end %>
-
-<% if @pending_invites %>
-	<ul> Your pending teams:
-	<% @pending_invites.each do |invite| %>
-		<li>
-			<%= invite.team.name %>
-      <%= button_to "Accept Invitation", "/invitations/#{invite.id}", :method => :delete %> 
-      <%= button_to "Reject Invitation", "/invitations/#{invite.id}", :method => :put %>
-		</li>
-	<% end %>
-	</ul>
-<% end %>
-
-<%= form_tag("/teams/create", method: "post") do %>
-  <%= label_tag('team[name]', "Name:") %>
-  <%= text_field_tag('team[name]') %>
-  <%= submit_tag("Create New Team") %>
-<% end %>
+	</div>
+</div>

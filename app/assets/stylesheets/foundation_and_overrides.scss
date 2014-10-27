@@ -96,32 +96,33 @@ $include-html-global-classes: $include-html-classes;
 // $font-weight-bold: bold !default;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
+$primary-color: #008CBA;
+$secondary-color: #e7e7e7;
 // $alert-color: #f04124;
-// $success-color: #43AC6A;
-// $warning-color: #f08a24;
-// $info-color: #a0d3e8;
+$alert-color: #C00000;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
 
-// $white       : #FFFFFF;
-// $ghost       : #FAFAFA;
-// $snow        : #F9F9F9;
-// $vapor       : #F6F6F6;
-// $white-smoke : #F5F5F5;
-// $silver      : #EFEFEF;
-// $smoke       : #EEEEEE;
-// $gainsboro   : #DDDDDD;
-// $iron        : #CCCCCC;
-// $base        : #AAAAAA;
-// $aluminum    : #999999;
-// $jumbo       : #888888;
-// $monsoon     : #777777;
-// $steel       : #666666;
-// $charcoal    : #555555;
-// $tuatara     : #444444;
-// $oil         : #333333;
-// $jet         : #222222;
-// $black       : #000000;
+$white       : #FFFFFF;
+$ghost       : #FAFAFA;
+$snow        : #F9F9F9;
+$vapor       : #F6F6F6;
+$white-smoke : #F5F5F5;
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$gainsboro   : #DDDDDD;
+$iron        : #CCCCCC;
+$base        : #AAAAAA;
+$aluminum    : #999999;
+$jumbo       : #888888;
+$monsoon     : #777777;
+$steel       : #666666;
+$charcoal    : #555555;
+$tuatara     : #444444;
+$oil         : #333333;
+$jet         : #222222;
+$black       : #000000;
 
 // We use these to control various global styles
 // $body-bg: $white;
@@ -803,6 +804,7 @@ $include-html-global-classes: $include-html-classes;
 // $include-html-off-canvas-classes: $include-html-classes;
 
 // $tabbar-bg: $oil;
+$tabbar-bg: $gainsboro;
 // $tabbar-height: rem-calc(45);
 // $tabbar-icon-width: $tabbar-height;
 // $tabbar-line-height: $tabbar-height;
@@ -1355,6 +1357,16 @@ $include-html-global-classes: $include-html-classes;
 // $tooltip-pip-size: 5px;
 // $tooltip-max-width: 300px;
 
+$has-tip-border-bottom: none;
+$has-tip-cursor-type: pointer;
+$tooltip-bg: $smoke;
+$tooltip-font-color: $jet;
+$tooltip-font-size-med: rem-calc(14);
+$has-tip-border-bottom-hover: none;
+$tooltip-radius: 99px;
+$tooltip-box-shadow: #B3B3B3 20px 20px 20px;
+
+
 // 34. Top Bar
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -1440,4 +1452,87 @@ $include-html-global-classes: $include-html-classes;
 // $include-legacy-visibility-classes: true;
 // $include-accessibility-classes: true;
 
-@import 'foundation';
+@import "foundation/components/global";
+@import "foundation/components/offcanvas";
+@import "foundation/components/icon-bar";
+@import "foundation/components/top-bar";
+@import "foundation/components/tabs";
+@import "foundation/components/tooltips";
+@import "foundation/components/panels";
+@import "foundation/components/alert-boxes";
+@import "foundation/components/grid";
+// 	@import "foundation/components/reveal";
+// 	@import "foundation/components/forms";
+//   @import "foundation/components/buttons";
+//   @import "foundation/components/dropdown";
+//   @import "foundation/components/dropdown-buttons";
+//   @import "foundation/components/accordion";
+
+
+
+// @import "foundation/components/grid";
+// @import "foundation/components/visibility";
+// @import "foundation/components/block-grid";
+// @import "foundation/components/type";
+// @import "foundation/components/buttons";
+// @import "foundation/components/forms";
+// @import "foundation/components/custom-forms";
+// @import "foundation/components/button-groups";
+// @import "foundation/components/dropdown-buttons";
+// @import "foundation/components/split-buttons";
+// @import "foundation/components/flex-video";
+// @import "foundation/components/section";
+// @import "foundation/components/top-bar";
+// @import "foundation/components/orbit";
+// @import "foundation/components/reveal";
+// @import "foundation/components/joyride";
+// @import "foundation/components/clearing";
+// @import "foundation/components/alert-boxes";
+// @import "foundation/components/breadcrumbs";
+// @import "foundation/components/keystrokes";
+// @import "foundation/components/labels";
+// @import "foundation/components/inline-lists";
+// @import "foundation/components/pagination";
+// @import "foundation/components/panels";
+// @import "foundation/components/pricing-tables";
+// @import "foundation/components/progress-bars";
+// @import "foundation/components/side-nav";
+// @import "foundation/components/sub-nav";
+// @import "foundation/components/switch";
+// @import "foundation/components/magellan";
+// @import "foundation/components/tables";
+// @import "foundation/components/thumbs";
+// @import "foundation/components/tooltips";
+// @import "foundation/components/dropdown";
+
+  	// @import "foundation/components/tabs";
+   // @import "foundation/components/grid";
+  //  @import "foundation/components/buttons";
+  //  @import "foundation/components/dropdown";
+  //  @import "foundation/components/dropdown-buttons";
+  //  @import "foundation/components/accordion";
+  
+  // @import "foundation/components/block-grid";
+  // @import "foundation/components/breadcrumbs";
+  // @import "foundation/components/button-groups";
+  // @import "foundation/components/clearing";
+  // @import "foundation/components/flex-video";  
+  // @import "foundation/components/inline-lists";
+  // @import "foundation/components/joyride";
+  // @import "foundation/components/keystrokes";
+  // @import "foundation/components/labels";
+  // @import "foundation/components/magellan";
+  // @import "foundation/components/orbit";
+  // @import "foundation/components/pagination";  
+  // @import "foundation/components/pricing-tables";
+  // @import "foundation/components/progress-bars";
+  // @import "foundation/components/range-slider";  
+  // @import "foundation/components/side-nav";
+  // @import "foundation/components/split-buttons";
+  // @import "foundation/components/sub-nav";
+  // @import "foundation/components/switches";
+  // @import "foundation/components/tables";
+  // @import "foundation/components/thumbs";  
+  // @import "foundation/components/type";
+  
+  // @import "foundation/components/visibility";

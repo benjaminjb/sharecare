@@ -21,3 +21,5 @@ module ErrorHelper
     html.html_safe
   end
 end
+
+:name=>["can't be blank"

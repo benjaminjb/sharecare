@@ -37,3 +37,37 @@ Team Page for <%= @team.name %>
   </div>
 </div>
 
+
+
+
+
+
+<dl class="tabs" data-tab>
+  <dd class="active">
+  	<a href="#panel1">Tab 1</a>
+	</dd>
+  <dd>
+  	<a href="#panel2">Tab 2</a>
+	</dd>
+  <dd>
+  	<a href="#panel3">Tab 3</a>
+	</dd>
+</dl>
+
+<div class="tabs-content">
+  <div class="content active" id="panel1">
+    <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>
+  </div>
+  <div class="content" id="panel2">
+    <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+  </div>
+  <div class="content" id="panel3">
+    <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+  </div>
+</div>
+
+@team
+@team.tasks
+@team.notes
+@team.invitations
+@users
