@@ -1,0 +1,28 @@
+<li class="active-team-element">
+  <%= link_to team.name, "/teams/#{team.id}" %>
+	<div class="team-users-slider">Teammates <i class="fa fa-users fa-2x"></i> </div>
+	<div>
+	<% if team.users %>
+		<ul class="current-team-users-<%=team.id%>">Current
+	  	<%= render team.users %>
+		</ul>
+	<% end %>
+	<% if team.invitations %>
+		<ul class="pending-team-users-<%=team.id%>">Pending
+	  	<%= render team.invitations %>
+		</ul>
+	<% end %>
+
+		<div class="add-user-panel">
+			Who would you like to invite to this team for <%= team.name %>?
+			<%= form_tag("/invitations/", :method => :post, :class => "form", :remote => true) do %>
+			  <%= label_tag("invitation[email]", "Email:") %>
+			  <%= text_field_tag("invitation[email]","", class: "invitation-email-#{team.id}") %>
+			  <%= hidden_field_tag "invitation[team_id]", "#{team.id}" %>
+			  <%= submit_tag "Send Invitation" %>
+			<% end %>
+		</div>
+
+		<%= button_to "Leave Team", "/teams/#{team.id}", :method => :delete, data: { confirm: "Are you sure?" } %>
+	</div>
+</li>

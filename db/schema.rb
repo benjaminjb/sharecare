@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023194429) do
+ActiveRecord::Schema.define(version: 20141027153605) do
 
   create_table "claims", force: true do |t|
     t.integer  "task_id"
@@ -26,14 +26,12 @@ ActiveRecord::Schema.define(version: 20141023194429) do
   create_table "invitations", force: true do |t|
     t.string   "email"
     t.integer  "team_id"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "open"
   end
 
   add_index "invitations", ["team_id"], name: "index_invitations_on_team_id"
-  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id"
 
   create_table "notes", force: true do |t|
     t.integer  "team_id"

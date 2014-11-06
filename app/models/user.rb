@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :rosters
   has_many :teams, :through => :rosters
-  has_many :invitations
+  # has_many :invitations
   has_many :tasks, :through => :teams
   has_many :notes, :through => :teams
   has_many :claims
 
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 end
 
 

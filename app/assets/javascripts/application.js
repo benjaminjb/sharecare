@@ -34,3 +34,10 @@
 
 
 $(function(){ $(document).foundation(); });
+
+$(function(){
+	$('.team-users-slider').click(function(){
+		$($(this).next()).slideToggle("slow", function(){
+		});
+	});
+});

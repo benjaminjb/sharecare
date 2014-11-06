@@ -1,16 +1,14 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
+  respond_to :html, :js
 
   def create
-    team = Team.new(team_params)
-
-    if team.save
-      Roster.create(:team_id => team.id, :user_id => current_user.id, :role => "help")
-      flash[:notice] = "Successfully created team for #{team.name}!"
-      redirect_to "/teams/#{team.id}"
+    team = Sharecare::UseCases::CreateTeam.run(team_params)
+    if team[:success?]
+      flash[:notice] = "Successfully created team for #{team.team.name}!"
+      roster = Sharecare::UseCases::CreateRoster.run(team.team)
     else
-      flash[:alert] = "Name can't be blank"
-      redirect_to :back
+      flash[:alert] = team[:error]
     end
   end
 

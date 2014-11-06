@@ -1,0 +1,9 @@
+<% if @invitation %>
+
+	var id = <%= @invitation.team_id %>;
+
+	$('.pending-team-users-'+id).append('<%= escape_javascript(render :partial => "invitation", :locals => { :invitation =>  @invitation } ) %>');
+
+	$($('.invitation-email-'+id)[0]).val('')
+
+<% end %>

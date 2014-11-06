@@ -1,4 +1,4 @@
-<div class="row">
+ <div class="row">
 	<div class="pending-invites-partial"><%= render "invitations/pending_invites" %></div>
 </div>
 
@@ -8,7 +8,7 @@
 
 <div class="row team-maker">
 	<div class="small-8 small-centered large-centered columns">
-		<%= form_tag("/teams/", method: "post") do %>
+		<%= form_tag("/teams/", method: "post", remote: true) do %>
 		  <%= label_tag('team[name]', "Name:") %>
 		  <%= text_field_tag('team[name]') %>
 		  <%= submit_tag("Create New Team") %>
