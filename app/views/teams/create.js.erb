@@ -1,2 +1,21 @@
-$('#comments').append('<%= escape_javascript(render :partial => @comment) %>');
-$('#comment_body').val('')
+<% if @team %>
+
+	$('.active-teams-list').append('<%= escape_javascript(render :partial => "team", :locals => { :team => @team } ) %>');
+
+	$('#team_name').val('');
+
+	$('.active-teams-list').after('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] ) %> </div> ');
+
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+<% else %>
+
+	$('#team_name').before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
+
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+<% end %>
+
+$('#team_name').focus(function() {
+  $( '.alert-box' ).slideUp('slow', function() {});
+});

@@ -1,28 +1,31 @@
-<li class="active-team-element">
+<li class="active-team-element-<%=team.id%>">
   <%= link_to team.name, "/teams/#{team.id}" %>
+  <% if !(team.rosters.select {|roster| roster.user_id == current_user.id && roster.role == "primary"}).empty? %>
+
+		<%= button_to "Delete Team", "/teams/#{team.id}", :method => :delete, :remote => true, data: { confirm: "Are you sure you want to delete this team?" } %>
+	<% end %>
+
 	<div class="team-users-slider">Teammates <i class="fa fa-users fa-2x"></i> </div>
 	<div>
-	<% if team.users %>
 		<ul class="current-team-users-<%=team.id%>">Current
 	  	<%= render team.users %>
 		</ul>
-	<% end %>
-	<% if team.invitations %>
 		<ul class="pending-team-users-<%=team.id%>">Pending
 	  	<%= render team.invitations %>
 		</ul>
-	<% end %>
 
 		<div class="add-user-panel">
 			Who would you like to invite to this team for <%= team.name %>?
 			<%= form_tag("/invitations/", :method => :post, :class => "form", :remote => true) do %>
 			  <%= label_tag("invitation[email]", "Email:") %>
-			  <%= text_field_tag("invitation[email]","", class: "invitation-email-#{team.id}") %>
 			  <%= hidden_field_tag "invitation[team_id]", "#{team.id}" %>
+			  <%= text_field_tag("invitation[email]","", class: "invitation-email-#{team.id}") %>
 			  <%= submit_tag "Send Invitation" %>
 			<% end %>
 		</div>
 
-		<%= button_to "Leave Team", "/teams/#{team.id}", :method => :delete, data: { confirm: "Are you sure?" } %>
+		<% holder = nil %>
+		<% team.rosters.each {|x| holder = x.id if x.user_id == current_user.id} %>
+		<%= button_to "Leave Team", "/teams/#{team.id}/rosters/#{holder}", :method => :delete, data: { confirm: "Are you sure you want to leave this team?" } %>		
 	</div>
 </li>

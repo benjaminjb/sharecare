@@ -1,0 +1,15 @@
+var id = <%= @invite_id %>;
+
+<% if @updated %>
+
+	$('.pending-invites-panel-invite-element-'+id).replaceWith('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] )  %> </div> ');
+	
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+	<% else %>
+
+	$('.pending-invites-panel-invite-element-'+id).before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
+
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+<% end %>

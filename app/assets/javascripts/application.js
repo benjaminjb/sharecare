@@ -35,9 +35,7 @@
 
 $(function(){ $(document).foundation(); });
 
-$(function(){
-	$('.team-users-slider').click(function(){
-		$($(this).next()).slideToggle("slow", function(){
-		});
+$(document).on('click', '.team-users-slider', function(){
+	$($(this).next()).slideToggle("slow", function(){
 	});
 });

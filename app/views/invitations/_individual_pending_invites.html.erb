@@ -1,0 +1,11 @@
+<li class="text-center pending-invites-panel-invite-element-<%= @invite.id %>" >
+	<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip radius round" title="Reject invitation">
+		<%= link_to '<i class="fa fa-close fa-2x"></i>'.html_safe, "/invitations/#{@invite.id}", :remote => true, :method => :put %>
+	</span>
+	<span class='option-format'><%= @invite.team.name %></span>
+	<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip radius round" title="Accept invitation">
+		<%= link_to '<i class="fa fa-check fa-2x"></i>'.html_safe, "/invitations/#{@invite.id}", :remote => true, :method => :delete %>
+	</span>
+<hr class="pending-invites-panel-horizontal-rule" />
+</li>
+

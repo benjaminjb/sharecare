@@ -4,6 +4,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(current_user.id)
     @pending_invites = Invitation.where(:email => current_user.email, :open => true)
-    @teams = @user.teams.includes(:users)
+    @teams = @user.teams.includes(:users, :rosters).includes(:invitations)
   end
 end

@@ -1,22 +1,10 @@
 <% if !@pending_invites.empty? %>
-	<div class="row">
-  	<div class="small-8 small-centered large-centered columns">
-			<div class="pending-invites-panel">
-				<ul class="no-bullet"> Your pending teams:
-				<% @pending_invites.each do |invite| %>
-					<li class="pending-invites-panel-invite-element text-center">
-						<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip radius round" title="Reject invitation">
-		  			<%= link_to '<i class="fa fa-close fa-2x"></i>'.html_safe, "/invitations/#{invite.id}", :method => :put %>
-		  			</span>
-		  			<span class='option-format'><%= invite.team.name %></span>
-						<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip radius round" title="Accept invitation">
-		  			<%= link_to '<i class="fa fa-check fa-2x"></i>'.html_safe, "/invitations/#{invite.id}", :method => :delete %>
-		  			</span>
-					</li>
-					<hr class="pending-invites-panel-horizontal-rule" />
-				<% end %>
-				</ul>
-			</div>
-		</div>
+  <div class="small-8 small-centered large-centered columns pending-invites-panel pending-invites" id="pending-invites">
+		<ul class="pending-invites-list no-bullet"> Your pending teams:
+			<% @pending_invites.each do |invite| %>
+				<%= render :partial=> '/invitations/individual_pending_invites', 
+				:locals => { :@invite => invite } %> 
+			<% end %>
+		</ul>
 	</div>
 <% end %>

@@ -1,8 +1,8 @@
 module Sharecare
   module UseCases
     class CreateRoster
-      def self.run(team)
-        roster = Roster.new(:team_id => team.id, :user_id => current_user.id)
+      def self.run(team, id, role)
+        roster = Roster.new(:team_id => team.id, :user_id => id, :role => role)
         if roster.save
           return {success?: true}
         else

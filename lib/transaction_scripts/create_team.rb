@@ -6,7 +6,7 @@ module Sharecare
         if team.save
           return {success?: true, team: team}
         else
-          error = x.errors.messages.map { |key,val|  "#{key.to_s.capitalize} #{val}"}
+          error = team.errors.messages.map { |key,val| "#{key.to_s.capitalize} #{val[0]}"}[0]
           return { success?: false, error: error }
         end
       end

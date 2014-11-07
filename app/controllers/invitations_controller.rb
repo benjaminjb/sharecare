@@ -1,48 +1,39 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_user!
-  # before_action :all_invitations, only: [:index, :create]
   respond_to :html, :js
 
   def create
     invitation = Sharecare::UseCases::CreateInvitation.run(invitation_params)
+    @team_id = invitation[:team_id]
     if invitation[:success?]
-      flash[:notice] = "Invitation sent to #{invitation[:email]}."
       @invitation = invitation[:invite]
-
+      flash[:notice] = "Invitation sent to #{@invitation[:email]}."
     else
       flash[:alert] = invitation[:error]
-      @error = invitation[:error]
     end
   end
 
-
   def update
-    invitation = Invitation.find(params[:id])
-    if invitation.email == current_user.email
-      invitation.open = false
-      invitation.save
-      flash[:notice] = "Invitation for #{invitation.team.name} rejected."
+    updated_invitation = Sharecare::UseCases::RejectInvitation.run(params[:id], current_user.email)
+    @updated = updated_invitation[:success?]
+    @invite_id = updated_invitation[:invite_id]
+    if updated_invitation[:success?]
+      flash[:notice] = updated_invitation[:message]
     else
-      flash[:alert] = "You don't have permission to accept that invitation."
+      flash[:alert] = updated_invitation[:message]
     end
-    redirect_to :back
   end
 
   def destroy
-    # transaction script
-    invitation = Invitation.find(params[:id])
-    if invitation.email == current_user.email
-      roster = Roster.new(:team_id => invitation.team_id, :user_id => current_user.id, :role => "help")
-      if roster.save
-        invitation.destroy
-        flash[:notice] = "Invitation for #{invitation.team.name} accepted."
-      else
-        flash[:alert] = "Unexpected error attempting to join team for #{invitation.team.name}."
-      end
+    updated_invitation = Sharecare::UseCases::AcceptInvitation.run(params[:id], current_user.email, current_user.id)
+    @updated = updated_invitation[:success?]
+    @invite_id = updated_invitation[:invite_id]
+    if updated_invitation[:success?]
+      @team = updated_invitation[:team]
+      flash[:notice] = updated_invitation[:message]
     else
-      flash[:alert] = "You don't have permission to change that invitation."
+      flash[:alert] = updated_invitation[:message]
     end
-    redirect_to :back
   end
 
   private
