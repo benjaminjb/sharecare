@@ -18,8 +18,10 @@ gem 'spring',        group: :development
 gem 'hirb'
 gem 'pry-byebug', group: [:development, :test]
 gem 'rspec-rails'
-gem 'better_errors', group: [:development]
-gem 'binding_of_caller', group: [:development]
+
+# Removed because trouble working with Vagrant machine
+# gem 'better_errors', group: [:development]
+# gem 'binding_of_caller', group: [:development]
 
 # For security
 gem 'devise'
@@ -31,6 +33,7 @@ gem 'font-awesome-sass'
 # For behavior
 gem 'best_in_place'
 gem 'jquery-ui-rails'
+gem 'jquery-datetimepicker-rails'
 
 # For utility
 gem 'require_all'

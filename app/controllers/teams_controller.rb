@@ -26,9 +26,13 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.includes(:tasks, :invitations, :rosters).find(params[:id])
-    if @team.users.include?(current_user)
-      @users = @team.users.where.not(:email => current_user.email)
+    @team = Sharecare::UseCases::ShowTeam.run(team_show_params["id"].to_i, current_user)
+    if @team[:success?]
+      @individual_claimed_tasks = @team[:claimed_tasks]
+      @individual_overdue_tasks = @team[:overdue_tasks]
+      @individual_active_tasks = @team[:active_tasks]
+      @individual_completed_tasks = @team[:completed_tasks]
+      flash[:notice] = "Welcome to the team page for #{@team[:team].name}"
     else
       flash[:alert] = "You don't have access to that team."
       redirect_to :back
@@ -38,5 +42,9 @@ class TeamsController < ApplicationController
   private
   def team_params
     params.require(:team).permit(:name)
+  end
+
+  def team_show_params
+    params.permit(:id)
   end
 end

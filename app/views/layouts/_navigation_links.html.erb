@@ -1,11 +1,11 @@
 <div class="icon-bar four-up">
   
   <li>
-  <%= link_to '<i class="fa fa-home fa-2x"><label>Home</label></i>'.html_safe, root_path, class: 'item' %>
+  <%= link_to '<i class="fa fa-home fa-2x fa-fw"><label>Home</label></i>'.html_safe, root_path, class: 'item' %>
   </li>
 
 	<li class="has-dropdown">
-	<%= link_to '<i class="fa fa-at fa-3x"><label>Contact</label></i>'.html_safe, "#", class: 'item' %>
+	<%= link_to '<i class="fa fa-at fa-2x fa-fw"><label>Contact</label></i>'.html_safe, "#", class: 'item' %>
 
 		<ul class="dropdown">
 			<li>
@@ -20,6 +20,6 @@
     </ul>
   </li>
 
-	<%= link_to '<i class="fa fa-paw"><label>About</label></i>'.html_safe, root_path, class: 'item' %>
+	<%= link_to '<i class="fa fa-paw fa-2x fa-fw"><label>About</label></i>'.html_safe, root_path, class: 'item' %>
   
-	<%= link_to '<i class="fa fa-sign-out fa-lg")><label>Sign Out</label></i>'.html_safe, "/users/sign_out", :method => :delete, class: 'item' %>
+	<%= link_to '<i class="fa fa-sign-out fa-2x fa-fw")><label>Sign Out</label></i>'.html_safe, "/users/sign_out", :method => :delete, class: 'item' %>

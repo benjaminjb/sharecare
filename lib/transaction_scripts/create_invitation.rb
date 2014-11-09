@@ -13,7 +13,6 @@ module Sharecare
 
         else
           invite = Invitation.new(params)
-          invite.open = true
         end
           
         if invite.save

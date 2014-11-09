@@ -1,0 +1,23 @@
+<div class="row task-maker">
+  <div class="small-8 small-centered large-centered columns">
+    <%= form_tag("/tasks/", method: "post", remote: true) do %>
+      <%= label_tag('task[task]', "Task:") %>
+      <%= text_field_tag('task[task]') %>
+
+      <%= label_tag('task[starttime]', "Possible Starting Time:") %>
+      <%= datetime_field_tag('task[starttime]') %>
+
+      <%= label_tag('task[endtime]', "Deadline:") %>
+      <%= datetime_field_tag('task[endtime]') %>
+      
+      <%= label_tag('task[notes]', "Notes:") %>
+      <%= text_area_tag('task[notes]', '', size: "24x3") %>
+
+      <%= button_tag(type: "submit", class: "button") do %>
+        Create New Task <i class="fa fa-plus-square fa-2x fa-fw"></i>
+      <% end %>
+    <% end %>
+
+  </div>
+</div>
+

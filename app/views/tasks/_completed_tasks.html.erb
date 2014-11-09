@@ -1,0 +1,14 @@
+<% if !(@individual_completed_tasks.empty?) %>
+
+<div class="small-10 small-centered large-centered columns completed-tasks" id="completed-tasks">
+	<div class="box">
+		<ul class="completed-tasks-list no-bullet">Completed Tasks:
+			<% @individual_completed_tasks.each do |task| %>
+				<%= render :partial=> '/tasks/individual_task', 
+				:locals => { :@task => task, :@state => :completed } %> 
+			<% end %>
+		</ul>
+	</div>
+</div>
+
+<% end %>

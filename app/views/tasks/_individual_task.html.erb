@@ -1,0 +1,50 @@
+<div class="box <%= @state %>">
+	<li class="task-list-element-<%=@task.id%>">
+	<div class="row">
+	  <div class="small-4 large-4 columns">
+			Task: <br><%= @task.task %>
+	  </div>
+	  <div class="small-4 large-4 columns">
+			<% if @task.starttime %>
+				Starting Time: <br> <%= @task.starttime.strftime("%A, %B #{@task.endtime.day.ordinalize}, %Y, %I:%M %P") %>
+			<% end %>
+	  </div>
+	  <div class="small-4 large-4 columns">
+			<% if @task.endtime %>
+				Deadline: <br><%= @task.endtime.strftime("%A, %B #{@task.endtime.day.ordinalize}, %Y, %I:%M %P") %>
+			<% end %>
+	  </div>
+	</div>
+  
+  <div class="row">
+	  <div class="small-6 large-3 columns">
+			<% if !(@state == :claimed || @state == :completed) %>
+				<%= link_to "Claim Task<i class='fa fa-flag fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=claim", :class => "button", :method => :put, :remote => true %>
+			<% end %>
+	  </div>
+	  <div class="small-6 large-3 columns">
+	  	<% if @state != :completed %>
+			<%= link_to "Complete Task<i class='fa fa-check fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=complete", :class => "button success", :method => :put, :remote => true %>
+			<% else %>
+				Completed at: <br>
+				<%= @task.completed_at.strftime("%A, %B #{@task.endtime.day.ordinalize}, %Y, %I:%M %P") %>
+			<% end %>
+	  </div>
+	  <div class="small-6 large-3 columns">
+	  	<% if @state != :completed %>
+				<%= link_to "Edit Task<i class='fa fa-edit fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=edit", :class => "button", :method => :put, :remote => true %>
+			<% else %>
+				Completed by: <br>
+				<% if @task.user.firstname && @task.user.lastname %>
+					<%= "#{@task.user.firstname} #{@task.user.lastname}" %>
+				<% else %>
+					<%= "#{@task.user.email}" %>
+				<% end %>
+			<% end %>
+	  </div>
+	  <div class="small-6 large-3 columns">
+			<%= link_to "Delete Task<i class='fa fa-minus-square fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}", :class => "button warning", :method => :delete, :remote => true, data: { confirm: "Are you sure you want to delete this task?" } %>
+	  </div>
+	</div>
+	</li>
+</div>

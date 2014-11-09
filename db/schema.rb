@@ -11,17 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027153605) do
-
-  create_table "claims", force: true do |t|
-    t.integer  "task_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "claims", ["task_id"], name: "index_claims_on_task_id"
-  add_index "claims", ["user_id"], name: "index_claims_on_user_id"
+ActiveRecord::Schema.define(version: 20141108024702) do
 
   create_table "invitations", force: true do |t|
     t.string   "email"

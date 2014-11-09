@@ -1,11 +1,15 @@
-<li class="text-center pending-invites-panel-invite-element-<%= @invite.id %>" >
-	<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip radius round" title="Reject invitation">
-		<%= link_to '<i class="fa fa-close fa-2x"></i>'.html_safe, "/invitations/#{@invite.id}", :remote => true, :method => :put %>
-	</span>
-	<span class='option-format'><%= @invite.team.name %></span>
-	<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip radius round" title="Accept invitation">
-		<%= link_to '<i class="fa fa-check fa-2x"></i>'.html_safe, "/invitations/#{@invite.id}", :remote => true, :method => :delete %>
-	</span>
-<hr class="pending-invites-panel-horizontal-rule" />
-</li>
+<div class="row box">
+	<li class="text-center pending-invites-panel-invite-element-<%= @invite.id %>" >
+		<div class="small-6 large-4 columns">
+			<%= link_to 'Reject Invitation<i class="fa fa-close fa-2x fa-fw"></i>'.html_safe, "/invitations/#{@invite.id}?join=false", :remote => true, :class => "button", :method => :delete %>
+		</div>
+		
+		<div class="small-6 large-4 columns">
+			<span class='option-format'><%= @invite.team.name %></span>
+		</div>
 
+		<div class="small-6 large-4 columns">
+			<%= link_to 'Accept Invitation<i class="fa fa-check fa-2x fa-fw"></i>'.html_safe, "/invitations/#{@invite.id}?join=true", :remote => true, :class => "button", :method => :delete %>
+		</div>
+	</li>
+</div>

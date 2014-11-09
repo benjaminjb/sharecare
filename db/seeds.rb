@@ -89,28 +89,33 @@ Roster.create([
 Invitation.create([
   {
     email: 'samedietc@hotmail.com',
-    team_id: 3,
-    open: true
+    team_id: 3
+    # ,
+    # open: true
   },
   {
     email: 'samedietc@hotmail.com',
-    team_id: 4,
-    open: true
+    team_id: 4
+    # ,
+    # open: true
   },
   {
     email: 'nick.mcdonough@yahoo.com',
-    team_id: 1,
-    open: true
+    team_id: 1
+    # ,
+    # open: true
   },
   {
     email: 'nick.mcdonough@yahoo.com',
-    team_id: 2,
-    open: true
+    team_id: 2
+    # ,
+    # open: true
   },
   {
     email: 'nick.mcdonough@yahoo.com',
-    team_id: 3,
-    open: true
+    team_id: 3
+    # ,
+    # open: true
   }
 ])
 
@@ -201,8 +206,8 @@ Task.create([
     task: "Doctor visit",
     completed: false,
     notes: "",
-    starttime: DateTime.parse('November 12th 2014 01:00:00 PM'),
-    endtime: DateTime.parse('November 12th 2014 01:15:00 PM')
+    starttime: DateTime.parse('November 7th 2014 01:00:00 PM'),
+    endtime: DateTime.parse('November 7th 2014 01:15:00 PM')
   },
   {
     team_id: 4, 

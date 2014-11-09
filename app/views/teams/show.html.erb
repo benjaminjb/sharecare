@@ -1,39 +1,29 @@
-Team Page for <%= @team.name %>
-
-<div class="off-canvas-wrap" data-offcanvas>
-  <div class="inner-wrap">
-    <a class="left-off-canvas-toggle" href="">Users</a>
-
-    <!-- Off Canvas Menu -->
-    <aside class="left-off-canvas-menu">
-      <div class="current-roster-partial"><%= render "rosters/current_roster" %></div>
-    </aside>
-
-    <!-- main content goes here -->
-    <div class="section-container nice contained tabs mobile" data-section="tabs">
-      <section class="active tasks">
-        <p class="title" data-section-title>
-          <a href="#">Tasks</a>
-        </p>
-        <div class="content" data-section-content>
-          <div class="task-list-partial"><%= render "tasks/task_list" %></div>
-          <p>Content of section 1.</p>
-        </div>
-      </section>
-
-      <section class="notes">
-        <p class="title" data-section-title>
-          <a href="#">Notes</a>
-        </p>
-        <div class="content" data-section-content>
-          <div class="note-list-partial"><%= render "notes/note_list" %></div>
-          <p>Content of section 2.</p>
-        </div>
-      </section>
-    </div>
-
-  <!-- close the off-canvas menu -->
-  <a class="exit-off-canvas"></a>
+<div class="row">
+  <div class="task-list-claimed-alert">
+    <%= render "tasks/claimed_tasks" %>
   </div>
 </div>
 
+<div class="row">
+  <div class="task-list-missed-deadline-alert">
+    <%= render "tasks/overdue_tasks" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="task-list-active">
+    <%= render "tasks/active_tasks" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="task-list-complete">
+    <%= render "tasks/completed_tasks" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-8 small-centered large-centered columns task-maker">
+    <%= render "tasks/task_create" %>
+  </div>
+</div>

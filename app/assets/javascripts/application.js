@@ -1,7 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-
 //= require jquery-ui/
+
 
 //= require jquery-ui/core
 //= require jquery-ui/widget
@@ -32,10 +32,20 @@
 //= require best_in_place.jquery-ui
 //= require_tree .
 
+//= require jquery.datetimepicker
 
 $(function(){ $(document).foundation(); });
 
 $(document).on('click', '.team-users-slider', function(){
 	$($(this).next()).slideToggle("slow", function(){
 	});
+});
+
+// Removed tooltips function, so commented out this otherwise helpful function
+// $(document).on('click', '.fa-close, .fa-check', function(){
+// 	$('.tooltip').hide();
+// });
+
+$(function() {
+  $("#task_starttime, #task_endtime").datepicker();
 });

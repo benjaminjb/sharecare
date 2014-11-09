@@ -13,8 +13,8 @@ class InvitationsController < ApplicationController
     end
   end
 
-  def update
-    updated_invitation = Sharecare::UseCases::RejectInvitation.run(params[:id], current_user.email)
+  def destroy
+    updated_invitation = Sharecare::UseCases::ModifyInvitation.run(params[:id], params[:join], current_user.email, current_user.id)
     @updated = updated_invitation[:success?]
     @invite_id = updated_invitation[:invite_id]
     if updated_invitation[:success?]
@@ -22,17 +22,8 @@ class InvitationsController < ApplicationController
     else
       flash[:alert] = updated_invitation[:message]
     end
-  end
-
-  def destroy
-    updated_invitation = Sharecare::UseCases::AcceptInvitation.run(params[:id], current_user.email, current_user.id)
-    @updated = updated_invitation[:success?]
-    @invite_id = updated_invitation[:invite_id]
-    if updated_invitation[:success?]
+    if updated_invitation[:team]
       @team = updated_invitation[:team]
-      flash[:notice] = updated_invitation[:message]
-    else
-      flash[:alert] = updated_invitation[:message]
     end
   end
 

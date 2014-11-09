@@ -4,9 +4,17 @@ var id = <%= @invite_id %>;
 
 	$('.pending-invites-panel-invite-element-'+id).replaceWith('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] )  %> </div> ');
 	
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {
+		if ($('.pending-invites-list li').length === 0) {
+			$('.pending-invites').hide();
+		}
+	});
+
+	<% if @team %>
 
 	$('.active-teams-list').append('<%= escape_javascript(render :partial => "teams/team", :locals => { :team => @team } ) %>');
+
+	<% end %>
 
 <% else %>
 
