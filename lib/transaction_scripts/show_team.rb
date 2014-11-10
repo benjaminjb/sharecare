@@ -7,14 +7,16 @@ module Sharecare
           return { success?: false, :access => false, message: "You don't have access to that team."}
         end
 
-        claimed_tasks = team.tasks.select {|task| task.user_id == user.id && !task.completed}
-        overdue_tasks = team.tasks.select {|task| task.endtime < Time.now && !task.completed} 
-        active_tasks = team.tasks.select {|task| !task.completed } - (claimed_tasks + overdue_tasks)
+        your_claimed_tasks = team.tasks.select {|task| task.user_id == user.id && !task.completed}
+        overdue_tasks = team.tasks.select {|task| task.endtime < Time.now && !task.completed}
+        others_claimed_tasks = team.tasks.select {|task| task.user_id && !task.completed} 
+        active_tasks = team.tasks.select {|task| !task.completed } - (your_claimed_tasks + others_claimed_tasks + overdue_tasks)
         completed_tasks = team.tasks.select {|task| task.completed}
 
         return { success?: true, 
           team: team,
-          claimed_tasks: claimed_tasks, 
+          your_claimed_tasks: your_claimed_tasks, 
+          others_claimed_tasks: others_claimed_tasks,
           overdue_tasks: overdue_tasks, 
           active_tasks: active_tasks, 
           completed_tasks: completed_tasks, 

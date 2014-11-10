@@ -2,7 +2,7 @@ module Sharecare
   module UseCases
     class CreateTask
       def self.run(params)
-        task = Task.new(params)
+        task = Task.new(params, completed: false)
         if task.task.nil?
           return { success?: false, message: "Task cannot be left blank." }
         elsif task.save

@@ -34,6 +34,8 @@ gem 'font-awesome-sass'
 gem 'best_in_place'
 gem 'jquery-ui-rails'
 gem 'jquery-datetimepicker-rails'
+gem 'sweet-alert'
+gem 'ledermann-rails-settings'
 
 # For utility
 gem 'require_all'

@@ -33,10 +33,11 @@
 //= require_tree .
 
 //= require jquery.datetimepicker
+//= require sweet-alert
 
 $(function(){ $(document).foundation(); });
 
-$(document).on('click', '.team-users-slider, .list', function(){
+$(document).on('click', '.team-users-slider', function(){
 	$($(this).next()).slideToggle("slow", function(){
 	});
 });
@@ -114,6 +115,54 @@ $(document).delegate(
   }
 );
 
-$(document).ready(function() {
-  $('.list').children().hide()
-}
+// $(document).ready(function() {
+//   $('.list').children().hide()
+// });
+
+// var listObserver = (function(){
+//   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
+//     eventListenerSupported = window.addEventListener;
+
+//   return function(obj, callback){
+//     if( MutationObserver ){
+//       var obs = new MutationObserver(function(mutations, observer){
+//           if( mutations[0].addedNodes.length || mutations[0].removedNodes.length ) {
+//             callback();
+//           }
+//       });
+//       obs.observe( obj, { childList:true });
+//     }
+//     else if( eventListenerSupported ){
+//       obj.addEventListener('DOMNodeInserted', callback, false);
+//       obj.addEventListener('DOMNodeRemoved', callback, false);
+//     }
+//   }
+// })();
+
+
+// listObserver( $('.list'), function(){ 
+//   console.log('dom changed');
+// });
+
+// var observer = new MutationObserver(function(mutations) {
+//   mutations.forEach(function(mutation) {
+
+
+//     storage.get('banned', function(blockedWords) {
+//       runBlockedWords(mutation.addedNodes, blockedWords.banned);
+//     });
+//   })
+// });
+
+// // The observer looks for the children of the .js-navigable-stream 
+// observer.observe(document.querySelector('.js-navigable-stream'), { childList: true });
+
+
+function SlideUpRemoveAlerts(count) {
+  var timer = count || 1500;
+  $( '.alert-box' ).delay(timer).slideUp('slow', function() {
+    $( '.alert-box' ).remove();
+  });
+};
+
+  

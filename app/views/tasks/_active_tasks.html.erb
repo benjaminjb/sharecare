@@ -4,5 +4,9 @@
 			<%= render :partial=> '/tasks/individual_task', 
 			:locals => { :@task => task, :@state => :active } %> 
 		<% end %>
+		<% @individual_other_claimed_tasks.each do |task| %>
+			<%= render :partial=> '/tasks/individual_task', 
+			:locals => { :@task => task, :@state => :claimed } %> 
+		<% end %>
 	</ul>
 </div>

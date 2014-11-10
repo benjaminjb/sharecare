@@ -2,13 +2,14 @@ var id = <%= @team_id %>;
 
 <% if @invitation %>
 
+	$('.pending-team-users-'+id).show();
+
 	$('.pending-team-users-'+id).append('<%= escape_javascript(render :partial => "invitation", :locals => { :invitation =>  @invitation } ) %>');
 
 	$('.invitation-email-'+id).val('');
 
 	$('.pending-team-users-'+id).after('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] ) %> </div> ');
 
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
 
 <% else %>
 
@@ -16,10 +17,16 @@ var id = <%= @team_id %>;
 
 	$('.invitation-email-'+id).val('');
 
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {
+		$( '.alert-box' ).remove();
+	});
 
 <% end %>
+	
+SlideUpRemoveAlerts(2000);
 
 $($('.invitation-email-'+id)[0]).focus(function() {
-  $( '.alert-box' ).slideUp('slow', function() {});
+  $( '.alert-box' ).slideUp('slow', function() {
+  	$( '.alert-box' ).remove();
+  });
 });

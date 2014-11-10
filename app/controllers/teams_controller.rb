@@ -28,7 +28,8 @@ class TeamsController < ApplicationController
   def show
     @team = Sharecare::UseCases::ShowTeam.run(team_show_params["id"].to_i, current_user)
     if @team[:success?]
-      @individual_claimed_tasks = @team[:claimed_tasks]
+      @individual_your_claimed_tasks = @team[:your_claimed_tasks]
+      @individual_others_claimed_tasks = @team[:others_claimed_tasks]
       @individual_overdue_tasks = @team[:overdue_tasks]
       @individual_active_tasks = @team[:active_tasks]
       @individual_completed_tasks = @team[:completed_tasks]
