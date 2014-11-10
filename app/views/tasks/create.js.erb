@@ -1,0 +1,21 @@
+<% if @task %>
+
+	$('.active-tasks-list').append('<%= escape_javascript(render :partial => "individual_task", :locals => { :task => @task, :@state => :active } ) %>');
+
+	$('#task_task, #task_startime, #task_endtime, #task_notes').val('');
+
+	$('.active-tasks-list').after('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] ) %> </div> ');
+
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+<% else %>
+
+	$('#task_task').before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
+
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+<% end %>
+
+$('#task_task').focus(function() {
+  $( '.alert-box' ).slideUp('slow', function() {});
+});

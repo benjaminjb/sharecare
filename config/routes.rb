@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :invitations, only: [:create, :destroy]
   resources :rosters, only: [:destroy]
   resources :teams, only: [:create, :show, :destroy]
-  resources :tasks, only: [:create, :update, :destroy]
+  resources :tasks, only: [:create, :update, :destroy, :edit]
   
 end

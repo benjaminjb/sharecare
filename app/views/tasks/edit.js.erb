@@ -1,0 +1,39 @@
+var id = <%= @task_id %>;
+$task = $('.task-list-element-'+id)
+
+<% if @task_success %>
+
+
+	var taskTask = $task.find($('.task-task')).text();
+
+	var taskStartime = $task.find($('.task-starttime')).text();
+
+	var taskEndtime = $task.find($('.task-endtime')).text();
+
+	$task.find($('.task-task')).html('
+		<input type="text" id="task_task_update" value="'+taskTask+'">
+	');
+
+	$task.find($('.task-starttime')).html('
+		<input type="datetime" id="task_starttime_update" class="datetimepicker-inputs" value="'+taskStarttime+'">
+	');
+
+	$task.find($('.task-endtime')).html('
+		<input type="datetime" id="task_endtime_update" class="datetimepicker-inputs" value="'+taskEndtime+'">
+	');
+
+	$task.find($('.buttons')).replaceWith(
+		"<%= escape_javascript( render :partial => tasks/individual_task_update )  %>"
+	);
+
+	$task.append('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] )  %> </div> ');
+	
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+	<% else %>
+
+	$task.before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
+
+	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+
+<% end %>

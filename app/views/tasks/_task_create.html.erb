@@ -5,13 +5,15 @@
       <%= text_field_tag('task[task]') %>
 
       <%= label_tag('task[starttime]', "Possible Starting Time:") %>
-      <%= datetime_field_tag('task[starttime]') %>
+      <%= datetime_field_tag('task[starttime]', nil, class: "datetimepicker-inputs") %>
 
       <%= label_tag('task[endtime]', "Deadline:") %>
-      <%= datetime_field_tag('task[endtime]') %>
+      <%= datetime_field_tag('task[endtime]', nil, class: "datetimepicker-inputs") %>
       
       <%= label_tag('task[notes]', "Notes:") %>
       <%= text_area_tag('task[notes]', '', size: "24x3") %>
+
+      <%= hidden_field_tag "task[team_id]", "#{params[:id]}" %>
 
       <%= button_tag(type: "submit", class: "button") do %>
         Create New Task <i class="fa fa-plus-square fa-2x fa-fw"></i>

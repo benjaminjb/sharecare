@@ -2,44 +2,55 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   respond_to :html, :js
 
-
-  
-  
   def create
-    roster = Sharecare::UseCases::LeaveTeam.run(roster_params, current_user.id)
-    @roster_success = roster[:success?]
-    @team_id = roster[:team_id]
-    if roster[:success?]
-      flash[:notice] = roster[:message]
+    task = Sharecare::UseCases::CreateTask.run(task_params)
+    @task_success = task[:success?]
+    if task[:success?]
+      @task = task[:task]
+      flash[:notice] = task[:message]
     else
-      flash[:alert] = roster[:message]
+      flash[:alert] = task[:message]
     end
   end
 
   def update
-    roster = Sharecare::UseCases::LeaveTeam.run(roster_params, current_user.id)
-    @roster_success = roster[:success?]
-    @team_id = roster[:team_id]
-    if roster[:success?]
-      flash[:notice] = roster[:message]
+    task = Sharecare::UseCases::ModifyTask.run(params[:id], params[:change], current_user.id)
+    @task_success = task[:success?]
+    @task_id = task[:task_id]
+    if task[:success?]
+      @task_change = task[:change]
+      @task = task[:task]
+      flash[:notice] = task[:message]
     else
-      flash[:alert] = roster[:message]
+      flash[:alert] = task[:message]
+    end
+  end
+
+  def edit
+    task = Sharecare::UseCases::RetrieveToAlterTask.run(params[:id], current_user.id)
+    @task_success = task[:success?]
+    @task_id = task[:task_id]
+    if task[:success?]
+      @task = task[:task]
+      flash[:notice] = task[:message]
+    else
+      flash[:alert] = task[:message]
     end
   end
 
   def destroy
-    roster = Sharecare::UseCases::LeaveTeam.run(roster_params, current_user.id)
-    @roster_success = roster[:success?]
-    @team_id = roster[:team_id]
-    if roster[:success?]
-      flash[:notice] = roster[:message]
+    task = Sharecare::UseCases::DestroyTask.run(params[:id], current_user.id)
+    @task_success = task[:success?]
+    @task_id = task[:task_id]
+    if task[:success?]
+      flash[:notice] = task[:message]
     else
-      flash[:alert] = roster[:message]
+      flash[:alert] = task[:message]
     end
   end
   
   private
-  def roster_params
-    params.require(:roster).permit(:id)
+  def task_params
+    params.require(:task).permit(:task, :starttime, :endtime, :notes, :team_id)
   end
 end

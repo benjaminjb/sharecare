@@ -21,9 +21,9 @@ User.create([
     password_confirmation: '12341234'
   },
   {
-    email: 'nick.mcdonough@yahoo.com',
+    email: 'nick.mcdonnough@yahoo.com',
     firstname: 'Nick',
-    lastname: 'McDonough',
+    lastname: 'McDonnough',
     password: '12341234', 
     password_confirmation: '12341234'
   },
@@ -38,13 +38,13 @@ User.create([
 
 Team.create([
   {
-    name: "Blackie Blattberg"
+    name: "Puppy Blattberg"
   },
   {
     name: "William Blattberg"
   },
   {
-    name: "Mom"
+    name: "Mom (Schmidt)"
   },
   {
     name: "Maple"
@@ -59,6 +59,10 @@ Roster.create([
   },
   {
     user_id: 3,
+    team_id: 1
+  },
+  {
+    user_id: 5,
     team_id: 1
   },
   {
@@ -100,19 +104,19 @@ Invitation.create([
     # open: true
   },
   {
-    email: 'nick.mcdonough@yahoo.com',
+    email: 'nick.mcdonnough@yahoo.com',
     team_id: 1
     # ,
     # open: true
   },
   {
-    email: 'nick.mcdonough@yahoo.com',
+    email: 'nick.mcdonnough@yahoo.com',
     team_id: 2
     # ,
     # open: true
   },
   {
-    email: 'nick.mcdonough@yahoo.com',
+    email: 'nick.mcdonnough@yahoo.com',
     team_id: 3
     # ,
     # open: true

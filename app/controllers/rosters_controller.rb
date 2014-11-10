@@ -1,9 +1,9 @@
 class RostersController < ApplicationController
   before_action :authenticate_user!
-  respond_to :html, :js
+  respond_to :js
 
   def destroy
-    roster = Sharecare::UseCases::LeaveTeam.run(roster_params, current_user.id)
+    roster = Sharecare::UseCases::LeaveTeam.run(params[:id], current_user.id)
     @roster_success = roster[:success?]
     @team_id = roster[:team_id]
     if roster[:success?]
@@ -14,7 +14,7 @@ class RostersController < ApplicationController
   end
 
   private
-  def roster_params
-    params.require(:roster).permit(:id)
-  end
+  # def roster_params
+  #   params.require(:roster).permit(:id)
+  # end
 end

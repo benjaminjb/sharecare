@@ -1,14 +1,8 @@
-<% if !(@individual_overdue_tasks.empty?) %>
-
-<div class="small-10 small-centered large-centered columns overdue-tasks" id="overdue-tasks">
-	<div class="box">
-		<ul class="overdue-tasks-list no-bullet">Overdue Tasks:
-			<% @individual_overdue_tasks.each do |task| %>
-				<%= render :partial=> '/tasks/individual_task', 
-				:locals => { :@task => task, :@state => :overdue } %> 
-			<% end %>
-		</ul>
-	</div>
+<div class="box small-10 small-centered large-centered columns overdue-tasks" id="overdue-tasks">
+	<ul class="list overdue-tasks-list no-bullet">Overdue Tasks:
+		<% @individual_overdue_tasks.each do |task| %>
+			<%= render :partial=> '/tasks/individual_task', 
+			:locals => { :@task => task, :@state => :overdue } %> 
+		<% end %>
+	</ul>
 </div>
-
-<% end %>

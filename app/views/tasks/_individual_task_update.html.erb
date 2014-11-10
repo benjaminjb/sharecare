@@ -1,0 +1,12 @@
+<div class="row buttons">
+
+  <div class="small-6 large-3 columns">
+		<%= link_to "Accept Edits<i class='fa fa-check fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=edit", :class => "button", :method => :put, :remote => true %>
+  </div>
+
+  <div class="small-6 large-3 columns">
+
+		<%= link_to "Cancel Edits<i class='fa fa-ben fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=replace", :class => "button success", :method => :put, :remote => true %>
+  </div>
+	  
+</div>

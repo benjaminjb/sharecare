@@ -35,7 +35,7 @@ class TeamsController < ApplicationController
       flash[:notice] = "Welcome to the team page for #{@team[:team].name}"
     else
       flash[:alert] = "You don't have access to that team."
-      redirect_to :back
+      redirect_to :root
     end
   end
 

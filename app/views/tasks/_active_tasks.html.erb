@@ -1,14 +1,8 @@
-<% if !(@individual_active_tasks.empty?) %>
-
-<div class="small-10 small-centered large-centered columns active-tasks" id="active-tasks">
-	<div class="box">
-		<ul class="active-tasks-list no-bullet">Open Tasks:
-			<% @individual_active_tasks.each do |task| %>
-				<%= render :partial=> '/tasks/individual_task', 
-				:locals => { :@task => task, :@state => :active } %> 
-			<% end %>
-		</ul>
-	</div>
+<div class="box small-10 small-centered large-centered columns active-tasks" id="active-tasks">
+	<ul class="list active-tasks-list no-bullet">Open Tasks:
+		<% @individual_active_tasks.each do |task| %>
+			<%= render :partial=> '/tasks/individual_task', 
+			:locals => { :@task => task, :@state => :active } %> 
+		<% end %>
+	</ul>
 </div>
-
-<% end %>

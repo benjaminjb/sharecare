@@ -1,12 +1,8 @@
-<% if !(@individual_claimed_tasks.empty?) %>
-<div class="small-10 small-centered large-centered columns claimed-tasks" id="claimed-tasks">
-	<div class="box">
-		<ul class="claimed-tasks-list no-bullet">Your Claimed Tasks:
-			<% @individual_claimed_tasks.each do |task| %>
-				<%= render :partial=> '/tasks/individual_task', 
-				:locals => { :@task => task, :@state => :claimed } %> 
-			<% end %>
-		</ul>
-	</div>
+<div class="box small-10 small-centered large-centered columns claimed-tasks" id="claimed-tasks">
+	<ul class="list claimed-tasks-list no-bullet">Your Claimed Tasks:
+		<% @individual_claimed_tasks.each do |task| %>
+			<%= render :partial=> '/tasks/individual_task', 
+			:locals => { :@task => task, :@state => :claimed } %> 
+		<% end %>
+	</ul>
 </div>
-<% end %>
