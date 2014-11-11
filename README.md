@@ -77,3 +77,4 @@ ___
 * Set up repeating tasks
 * Set up calendar view
 * Further styling
+* Allow claimed tasks to also show up with an overdue alert
