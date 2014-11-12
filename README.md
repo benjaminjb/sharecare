@@ -61,7 +61,6 @@ ___
 ### Extended Features
 
 A User can
-* Edit tasks in place
 * Leaving a team passes on "primary" to next team member or informs user that they are the only user and should delete the team instead
 * See tasks split into different categories (claimed, overdue, active, completed)
 * Prevent users from getting multiple invitations for the same team
@@ -80,3 +79,4 @@ ___
 * Allow claimed tasks to also show up with an overdue alert
 * Further refactoring
 * Dropdown menu auto-filled with common tasks
+* Edit tasks in place
