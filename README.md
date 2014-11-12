@@ -81,3 +81,6 @@ ___
 * Dropdown menu auto-filled with common tasks
 * Edit tasks in place
 * Allow users to undo changes made (i.e., to unclaim a task or uncomplete a task)
+* Relay messages from one user to another, both system created (i.e., "User Ben has destroyed the team for Puppy") and user defined
+* Allow users to drag tasks both to re-sort them and possibly assign them different categories (i.e., drag task to the claimed section
+* Change DateTimePicker to 12 hour cycle; ensure min and max values
