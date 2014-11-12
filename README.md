@@ -89,3 +89,4 @@ ___
 * About us / Contact Us pages (use fa-paw and fa-plane) (possible footer)
 * Badges, karma for completing tasks
 * Add notes model (removed for MVP)
+* Mobile and responsive designs
