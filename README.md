@@ -84,3 +84,8 @@ ___
 * Relay messages from one user to another, both system created (i.e., "User Ben has destroyed the team for Puppy") and user defined
 * Allow users to drag tasks both to re-sort them and possibly assign them different categories (i.e., drag task to the claimed section
 * Change DateTimePicker to 12 hour cycle; ensure min and max values
+* Add OmniAuth to allow different forms of sign up / sign in
+* Put sign in and sign up on same page
+* About us / Contact Us pages (use fa-paw and fa-plane) (possible footer)
+* Badges, karma for completing tasks
+* Add notes model (removed for MVP)
