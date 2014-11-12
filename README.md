@@ -80,3 +80,4 @@ ___
 * Further refactoring
 * Dropdown menu auto-filled with common tasks
 * Edit tasks in place
+* Allow users to undo changes made (i.e., to unclaim a task or uncomplete a task)
