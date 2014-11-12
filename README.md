@@ -79,3 +79,4 @@ ___
 * Further styling
 * Allow claimed tasks to also show up with an overdue alert
 * Further refactoring
+* Dropdown menu auto-filled with common tasks
