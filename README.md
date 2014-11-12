@@ -90,3 +90,4 @@ ___
 * Badges, karma for completing tasks
 * Add notes model (removed for MVP)
 * Mobile and responsive designs
+* Add "invited by" to invitations table, pending invites
