@@ -3,9 +3,9 @@
 ==============
 
 ###Project Overview
-ShareCare is Rails based, and was built as part of the accelerated learning program at MakerSquare.
+ShareCare is a Rails-based web app for sharing caretaking duties. 
 
-Which means that, though I'd love for this to be an actual product, it was build largely as a learning process. It would also be called "project management for dogs" if that didn't make it sound like the dogs were doing the management.
+It was built as part of the accelerated learning program at MakerSquare. Which means that, though I'd love for this to be an actual product, it was build largely as a learning process. It would also be called "project management for dogs" if that didn't make it sound like the dogs were doing the management.
 ___
 ### Project Inspiration
 My girlfriend and I have both a dog AND busy schedules that don't always overlap. Sometimes, I'll come home from work and not be sure whether the dog needs to be walked or fed because my girlfriend forgot to leave a note. (Honestly, it happens just as frequently the other way around.) It's not a great shame if we walk her or feed her twice; but what if I'm not sure if she's had her medicine?
