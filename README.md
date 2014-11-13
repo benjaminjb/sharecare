@@ -8,9 +8,9 @@ ShareCare is Rails based, and was built as part of the accelerated learning prog
 Which means that, though I'd love for this to be an actual product, it was build largely as a learning process. It would also be called "project management for dogs" if that didn't make it sound like the dogs were doing the management.
 ___
 ### Project Inspiration
-My girlfriend and I have a dog and busy schedules that don't always overlap. Sometimes, I'll come home from work after my girlfriend has already come home and gone out again; and I'm not sure whether the dog has been fed or walked already. (And the dog never passes up a chance for a walk or a free meal.) It's not a great shame if we walk her or feed her twice; but what if I'm not sure if she's had her medicine?
+My girlfriend and I have both a dog AND busy schedules that don't always overlap. Sometimes, I'll come home from work and not be sure whether the dog needs to be walked or fed because my girlfriend forgot to leave a note. (Honestly, it happens just as frequently the other way around.) It's not a great shame if we walk her or feed her twice; but what if I'm not sure if she's had her medicine?
 
-And what if we're talking not about our dog, but about a baby or about an elderly parent that needs help?
+And what if we're talking not about our dog, but about a baby or about an elderly parent that needs to be cared for?
 
 This was my inspiration for ShareCare, a web app I designed to be easy to use so that you could walk the dog (or rock a baby) with one hand and click "Task Complete!" on your phone with the other.
 ___
@@ -61,33 +61,18 @@ ___
 ### Extended Features
 
 A User can
-* Leaving a team passes on "primary" to next team member or informs user that they are the only user and should delete the team instead
+* Leave a team that they are in charge of and pass on "primary" status to the next team member
+* Be informed if they are the last member of that team--and be asked to delete rather than leave
 * See tasks split into different categories (claimed, overdue, active, completed)
-* Prevent users from getting multiple invitations for the same team
-* Change normal alert to SweetAlerts
+* Avoid getting multiple invitations for the same team
+* Get SweetAlerts rather than boring normal alerts
 
 ___
 
 ### Future Additions
 
-* Prevent users from continually re-inviting the same person who has already rejected an invitation
 * Create settings page where user can set variables that will be remembered for each visit: time zone, style of alert, length before auto-close of alert
 * Set up emailer, possibly SMS text alert system
 * Set up repeating tasks
 * Set up calendar view
-* Further styling
-* Allow claimed tasks to also show up with an overdue alert
-* Further refactoring
-* Dropdown menu auto-filled with common tasks
-* Edit tasks in place
-* Allow users to undo changes made (i.e., to unclaim a task or uncomplete a task)
-* Relay messages from one user to another, both system created (i.e., "User Ben has destroyed the team for Puppy") and user defined
-* Allow users to drag tasks both to re-sort them and possibly assign them different categories (i.e., drag task to the claimed section
-* Change DateTimePicker to 12 hour cycle; ensure min and max values
-* Add OmniAuth to allow different forms of sign up / sign in
-* Put sign in and sign up on same page
-* About us / Contact Us pages (use fa-paw and fa-plane) (possible footer)
-* Badges, karma for completing tasks
-* Add notes model (removed for MVP)
-* Mobile and responsive designs
-* Add "invited by" to invitations table, pending invites
+* Responsive and mobile design
