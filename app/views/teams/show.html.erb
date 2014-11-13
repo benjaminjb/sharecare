@@ -27,3 +27,10 @@
     <%= render "tasks/task_create" %>
   </div>
 </div>
+
+<script type="text/javascript">
+  var lists = $('.list');
+  for (var i = 0; i < lists.length; i++) {
+    checkChildren(lists[i]);
+  }
+</script>

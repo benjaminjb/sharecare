@@ -1,0 +1,43 @@
+
+
+// .header-title {
+//     padding-left: 2em;
+//     padding-right: 2em;
+// }
+
+// .icons-welcome-bar {
+//     margin-top: 64px;
+// }
+
+// h1.item, .header-title {
+//     color: white;
+// }
+
+.team-button, button.team-users-slider, .task-button {
+    min-height: 65px;
+    min-width: 195px;
+}
+a.team-button, button.team-users-slider, a.task-button {
+    line-height: 42px;
+}
+
+button.team-users-slider {
+    margin-left: 15px;
+}
+
+#invitation_email {
+    width: 650px;
+}
+
+.list-label, .task-info-label {
+    margin-left: -1.25em;
+    font-family: cursive;
+}
+
+.team-users-slider-info,  {
+    margin-left: 1em;
+}
+
+.move-over {
+    margin-left: 1em;
+}

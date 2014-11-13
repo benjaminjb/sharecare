@@ -26,12 +26,7 @@
 }
 
 .main-body-panel-container {
-	clear: both;
-	margin: 0 auto;
-}
-
-.left-off-canvas-menu {
-	height: 100%;
+	margin: 118px auto 0;
 }
 
 .team-users-slider + div {
@@ -39,5 +34,13 @@
 }
 
 .box {
-	border: 2px solid black;
+	border-right: 2px solid black;
+	border-bottom: 2px solid black;
+	border-bottom-right-radius: 30px;
+	padding-top: .75em
 }
+
+i span {
+    font-family: "Oleo Script", cursive;
+}
+

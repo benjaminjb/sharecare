@@ -3,7 +3,7 @@
 		
 		<div class="row">
 	  	<div class="small-4 large-4 columns">
-			Task:
+			<span class="task-info-label move-over">Task:</span>
 			</div>
 	  	<div class="small-8 large-8 columns">
 			<span class="task-task">
@@ -14,7 +14,7 @@
 
 		<div class="row">
 	  	<div class="small-4 large-4 columns">
-			Starting Time:
+			<span class="task-info-label move-over">Starting Time:</span>
 			</div>
 	  	<div class="small-8 large-8 columns">
 			<span class="task-starttime">
@@ -27,7 +27,7 @@
 
 		<div class="row">
 	  	<div class="small-4 large-4 columns">
-			Ending Time:
+			<span class="task-info-label move-over">Ending Time:</span>
 			</div>
 	  	<div class="small-8 large-8 columns">
 			<span class="task-endtime">
@@ -42,39 +42,50 @@
   
   <div class="row buttons">
 
-	  <div class="small-6 large-3 columns">
-			<% if !(@state == :claimed || @state == :completed) %>
-				<%= link_to "Claim Task<i class='fa fa-flag fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=claimed", :class => "button", :method => :put, :remote => true %>
+	  <div class="small-6 large-4 columns">
+			<% if @state == :claimed %>
+				<span class="task-info-label move-over">Claimed by:</span> <br>
+				<% if @task.user.firstname && @task.user.lastname %>
+					 <span class="move-over"><%= "#{@task.user.firstname} #{@task.user.lastname}" %></span>
+				<% else %>
+					<span class="move-over"><%= "#{@task.user.email}" %></span>
+				<% end %>			
+			<% elsif @state == :completed %>
+				<span class="task-info-label move-over">Completed by:</span> <br>
+				<% if @task.user.firstname && @task.user.lastname %>
+					<span class="move-over"><%= "#{@task.user.firstname} #{@task.user.lastname}" %></span>
+				<% else %>
+					<span class="move-over"><%= "#{@task.user.email}" %></span>
+				<% end %>
 			<% else %>
-				Claimed by: <br>
-				<%= @task.user %>
+				<%= link_to "Claim<i class='fa fa-flag fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=claimed", :class => "button task-button", :method => :put, :remote => true %>
 			<% end %>
 	  </div>
 
-	  <div class="small-6 large-3 columns">
+	  <div class="small-6 large-4 columns">
 	  	<% if @state != :completed %>
-			<%= link_to "Complete Task<i class='fa fa-check fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=completed", :class => "button success", :method => :put, :remote => true %>
+			<%= link_to "Complete<i class='fa fa-check fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}?change=completed", :class => "button task-button success", :method => :put, :remote => true %>
 			<% else %>
-				Completed at: <br>
+				<span class="task-info-label move-over">Completed at:</span> <br>
 				<%= @task.completed_at.strftime("%A, %B #{@task.endtime.day.ordinalize}, %Y, %I:%M %P") %>
 			<% end %>
 	  </div>
 	  
-	  <div class="small-6 large-3 columns">
-	  	<% if @state != :completed %>
-				<%= link_to "Edit Task<i class='fa fa-edit fa-2x fa-fw'></i>".html_safe, edit_task_path(@task.id), :class => "button", :method => :get, :remote => true %>
-			<% else %>
+	 <!--  <div class="small-6 large-3 columns">
+	  	<#% if @state != :completed %>
+				<%#= link_to "Edit Task<i class='fa fa-edit fa-2x fa-fw'></i>".html_safe, edit_task_path(@task.id), :class => "button", :method => :get, :remote => true %>
+			<#% else %>
 				Completed by: <br>
-				<% if @task.user.firstname && @task.user.lastname %>
-					<%= "#{@task.user.firstname} #{@task.user.lastname}" %>
-				<% else %>
-					<%= "#{@task.user.email}" %>
-				<% end %>
-			<% end %>
-	  </div>
+				<#% if @task.user.firstname && @task.user.lastname %>
+					<%#= "#{@task.user.firstname} #{@task.user.lastname}" %>
+				<#% else %>
+					<%#= "#{@task.user.email}" %>
+				<#% end %>
+			<#% end %>
+	  </div> -->
 	  
-	  <div class="small-6 large-3 columns">
-			<%= link_to "Delete Task<i class='fa fa-minus-square fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}", :class => "button warning", :method => :delete, :remote => true, data: { confirm: "Are you sure you want to delete this task?" } %>
+	  <div class="small-6 large-4 columns">
+			<%= link_to "Delete<i class='fa fa-minus-square fa-2x fa-fw'></i>".html_safe, "/tasks/#{@task.id}", :class => "button task-button warning", :method => :delete, :remote => true, data: { confirm: "Are you sure you want to delete this task?" } %>
 	  </div>
 	
 	</div>

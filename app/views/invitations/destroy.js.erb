@@ -1,14 +1,17 @@
 var id = <%= @invite_id %>;
 
+var address = '.pending-invites-partial' ;
+
+var alertStyle = '<%= escape_javascript( session[:alert_style] ) %>' ;
+var alertLength = '<%= session[:alert_length] %>' ;
+var alertType = '<%= escape_javascript( flash[:notice] ? "success" : "error" ) %>' ;
+var alertMessage = '<%= escape_javascript raw( flash[:notice] || flash[:alert] ) %>' ; 
+var alertPlacement = address ;
+
+
 <% if @updated %>
 
-	$('.pending-invites-panel-invite-element-'+id).replaceWith('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] )  %> </div> ');
-	
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {
-		if ($('.pending-invites-list li').length === 0) {
-			$('.pending-invites').hide();
-		}
-	});
+	$('.pending-invites-panel-invite-element-'+id).remove();
 
 	<% if @team %>
 
@@ -16,10 +19,11 @@ var id = <%= @invite_id %>;
 
 	<% end %>
 
-<% else %>
-
-	$('.pending-invites-panel-invite-element-'+id).before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
-
 <% end %>
+
+checkChildren('.pending-invites-list');
+addAlert( alertStyle, alertType, alertMessage, alertPlacement, alertLength )
+
+// if ($('.pending-invites-list li').length === 0) {
+// 	$('.pending-invites').hide();
+// }

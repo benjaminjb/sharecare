@@ -13,23 +13,31 @@
   </head>
 
   <body>
-  <div class="row clearfix">
-    <div class="small-9 small-centered large-centered columns">
-    <div class="navbar_center"><%= render "layouts/navbar" %></div>    
+
+<!--   <div class="fixed">
+    <nav class="top-bar welcome-bar" data-topbar role="navigation">
+    <#%if current_user %>
+      <h1 class="left header-title">Hello, <%#= current_user.firstname ? current_user.firstname : current_user.email %></h1>
+    <#% else %>
+      <h1 class="left header-title">Please sign in</h1>
+    <#% end %>
+    <h1 class="right header-title">ShareCare</h1>
+    </nav>
+  </div> -->
+
+  <div class="fixed icons-welcome-bar">
+    <div class="icon-bar two-up top-bar contain-to-grid" data-topbar role="navigation">
+      <%= link_to '<i class="fa fa-home fa-2x fa-fw"><br><span class="right">Home</span></i>'.html_safe, root_path, :class => "item" %>
+      <%= link_to '<i class="fa fa-sign-out fa-2x fa-fw")><br><span>Out</span></i>'.html_safe, "/users/sign_out", :method => :delete, class: 'item' %>
+    </div>   
+  </div>
+ 
+  <div class="row main-body-panel-container">
+    <div class="small-10 small-centered large-centered columns">
+      <%= yield %>
     </div>
   </div>
 
-  <div class="row clearfix">
-    <div class="small-9 small-centered large-centered columns">
-    <div class="message_center"><%= render "layouts/message_center" %></div>
-    </div>
-  </div>
-
-  <div class="row main-body-panel-container clearfix">
-    <div class="small-9 small-centered large-centered columns">
-    <%= yield %>
-    </div>
-  </div>  
   
   <%= javascript_include_tag "application" %>
   </body>

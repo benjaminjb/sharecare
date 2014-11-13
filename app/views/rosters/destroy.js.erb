@@ -1,15 +1,17 @@
 var id = <%= @team_id %>;
+var address = '.active-team-element-'+id
+
+var alertStyle = '<%= escape_javascript( session[:alert_style] ) %>' ;
+var alertLength = '<%= session[:alert_length] %>' ;
+var alertType = '<%= escape_javascript( flash[:notice] ? "success" : "error" ) %>' ;
+var alertMessage = '<%= escape_javascript raw( flash[:notice] || flash[:alert] ) %>' ; 
+var alertPlacement = '.active-teams-list';
 
 <% if @roster_success %>
 
-	$('.active-team-element-'+id).replaceWith('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
-
-	<% else %>
-
-	$('.active-team-element-'+id).before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+	$(address).remove();
 
 <% end %>
+
+checkChildren($(address).parent());
+addAlert( alertStyle, alertType, alertMessage, alertPlacement, alertLength )

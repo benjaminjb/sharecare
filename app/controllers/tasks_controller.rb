@@ -14,7 +14,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Sharecare::UseCases::ModifyTask.run(params[:id], params[:change], current_user.id)
+    task = Sharecare::UseCases::ModifyTask.run(params[:id], params[:change], current_user.id, session[:time_zone])
     @task_success = task[:success?]
     @task_id = task[:task_id]
     if task[:success?]

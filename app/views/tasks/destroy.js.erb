@@ -1,15 +1,18 @@
 var id = <%= @task_id %>;
+var address = '.task-list-element-'+id;
+var parent = $(address).parent();
+
+var alertStyle = '<%= escape_javascript( session[:alert_style] ) %>' ;
+var alertLength = '<%= session[:alert_length] %>' ;
+var alertType = '<%= escape_javascript( flash[:notice] ? "success" : "error" ) %>' ;
+var alertMessage = '<%= escape_javascript raw( flash[:notice] || flash[:alert] ) %>' ; 
+var alertPlacement = $('.task-list-element-'+id).parent() ;
 
 <% if @task_success %>
 
-	$('.task-list-element-'+id).replaceWith('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
-
-	<% else %>
-
-	$('.task-list-element-'+id).before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+	$(address).remove();
 
 <% end %>
+
+checkChildren(parent);
+addAlert( alertStyle, alertType, alertMessage, alertPlacement, alertLength )

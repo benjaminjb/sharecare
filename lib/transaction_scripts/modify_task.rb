@@ -1,7 +1,7 @@
 module Sharecare
   module UseCases
     class ModifyTask
-      def self.run(task_id, change, user_id)
+      def self.run(task_id, change, user_id, time_zone)
 
         task = Task.includes(:team).find(task_id)
 
@@ -16,7 +16,7 @@ module Sharecare
         case change
         when "completed"
           task.completed = true
-          task.completed_at = DateTime.now
+          task.completed_at = DateTime.now.in_time_zone(time_zone)
         end
 
         task.save

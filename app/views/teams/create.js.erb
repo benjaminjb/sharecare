@@ -1,23 +1,18 @@
+var address = '.active-teams-list' ;
+
+var alertStyle = '<%= escape_javascript( session[:alert_style] ) %>' ;
+var alertLength = '<%= session[:alert_length] %>' ;
+var alertType = '<%= escape_javascript( flash[:notice] ? "success" : "error" ) %>' ;
+var alertMessage = '<%= escape_javascript raw( flash[:notice] || flash[:alert] ) %>' ; 
+var alertPlacement = address ;
+
 <% if @team %>
 
-	$('.active-teams-list').append('<%= escape_javascript(render :partial => "team", :locals => { :team => @team } ) %>');
-
-	$('#team_name').val('');
-
-	$('.active-teams-list').after('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
-
-sweetAlert("Oops...", "<%= escape_javascript( flash[:notice] ) %>", "error");
-
-<% else %>
-
-	$('#team_name').before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+	$(address).append('<%= escape_javascript(render :partial => "team", :locals => { :team => @team } ) %>');
 
 <% end %>
 
-$('#team_name').focus(function() {
-  $( '.alert-box' ).slideUp('slow', function() {});
-});
+$('#team_name').val('');
+
+checkChildren(address);
+addAlert( alertStyle, alertType, alertMessage, alertPlacement, alertLength )

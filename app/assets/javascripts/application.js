@@ -1,51 +1,20 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui/
 
-
-//= require jquery-ui/core
-//= require jquery-ui/widget
-//= require jquery-ui/mouse
-//= require jquery-ui/position
-//= require jquery-ui/selectable
-
-//= require jquery-ui/accordion
 //= require jquery-ui/button
 //= require jquery-ui/datepicker
-//= require jquery-ui/menu
-//= require jquery-ui/selectmenu
-//= require jquery-ui/tabs
-//= require jquery-ui/tooltip
-
-//= require jquery-ui/effect
-//= require jquery-ui/effect-blind
-//= require jquery-ui/effect-bounce
-//= require jquery-ui/effect-drop
-//= require jquery-ui/effect-fade
-//= require jquery-ui/effect-shake
-//= require jquery-ui/effect-slide
-
 
 // only require what you need
-//= require foundation
-//= require best_in_place
-//= require best_in_place.jquery-ui
+
 //= require_tree .
 
 //= require jquery.datetimepicker
 //= require sweet-alert
 
-$(function(){ $(document).foundation(); });
-
 $(document).on('click', '.team-users-slider', function(){
 	$($(this).next()).slideToggle("slow", function(){
 	});
 });
-
-// Removed tooltips function, so commented out this otherwise helpful function
-// $(document).on('click', '.fa-close, .fa-check', function(){
-// 	$('.tooltip').hide();
-// });
 
 $(document).delegate(
   ".datetimepicker-inputs", 
@@ -115,54 +84,73 @@ $(document).delegate(
   }
 );
 
-// $(document).ready(function() {
-//   $('.list').children().hide()
-// });
+function checkChildren(address) {
+  if ($(address).children().length > 0) {
+    $(address).show();
+  } else {
+    $(address).hide();
+  }
+}
 
-// var listObserver = (function(){
-//   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver,
-//     eventListenerSupported = window.addEventListener;
-
-//   return function(obj, callback){
-//     if( MutationObserver ){
-//       var obs = new MutationObserver(function(mutations, observer){
-//           if( mutations[0].addedNodes.length || mutations[0].removedNodes.length ) {
-//             callback();
-//           }
-//       });
-//       obs.observe( obj, { childList:true });
-//     }
-//     else if( eventListenerSupported ){
-//       obj.addEventListener('DOMNodeInserted', callback, false);
-//       obj.addEventListener('DOMNodeRemoved', callback, false);
-//     }
-//   }
-// })();
-
-
-// listObserver( $('.list'), function(){ 
-//   console.log('dom changed');
-// });
-
-// var observer = new MutationObserver(function(mutations) {
-//   mutations.forEach(function(mutation) {
-
-
-//     storage.get('banned', function(blockedWords) {
-//       runBlockedWords(mutation.addedNodes, blockedWords.banned);
-//     });
-//   })
-// });
-
-// // The observer looks for the children of the .js-navigable-stream 
-// observer.observe(document.querySelector('.js-navigable-stream'), { childList: true });
-
+function addAlert( alertStyle, alertType, alertMessage, alertPlacement, alertLength ) {
+  switch (alertStyle) {
+    case "sweet":
+      swal({
+        title: alertType.charAt(0).toUpperCase() + alertType.substring(1) + "!",
+        type: alertType,
+        text: alertMessage,  
+        timer: alertLength,
+        allowOutsideClick: true 
+      });
+      break;
+    default: 
+      $(alertPlacement).before('<div data-alert class="alert-box '+ alertType +' radius">'+alertMessage+'</div> ');
+      SlideUpRemoveAlerts(alertLength);
+  }
+}
 
 function SlideUpRemoveAlerts(count) {
-  var timer = count || 1500;
+  var timer = count || 2000;
   $( '.alert-box' ).delay(timer).slideUp('slow', function() {
     $( '.alert-box' ).remove();
   });
 };
 
+// To override the usual confirm (on leave and delete functions)
+// (Data confirm left into those functions to provide back-up)
+// This overrides the usual rails confirm action
+$.rails.confirm = function(message, element) { 
+  return true;
+};
+
+// set a temporary override so that 
+var override = false;
+
+$('[data-confirm]').on('click', function (e) {
+  // If the override is true -- which happens if we click "yes" on this confirm modal
+  // then we are returned from this entire function
+  if (override) {
+    override = false;
+    return;
+  }
   
+  swal({
+    title: "Warning",
+    text: $(e.currentTarget).attr('data-confirm'),
+    allowOutsideClick: true,
+    type: "warning",   
+    showCancelButton: true,   
+    confirmButtonColor: "#DD6B55",   
+    confirmButtonText: "Yes, I'm sure!",
+    closeOnConfirm: true 
+  }, 
+  function (){
+    override = true;
+    e.currentTarget.click();
+  }
+  );
+  // to prevent e from running normally if override is false
+  // if override is true, we skip this whole function
+  e.preventDefault();
+  return false;
+})

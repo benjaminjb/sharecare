@@ -1,7 +1,6 @@
 /*
  *= require_tree .
  *= require_self
- *= require font-awesome
  *= require sweet-alert
  *= require foundation_and_overrides
 */
@@ -12,68 +11,10 @@
 
 /*
  *= require jquery-ui/core
- *= require jquery-ui/theme
- *= require jquery-ui/selectable
- *= require jquery-ui/accordion
- *= require jquery-ui/button
  *= require jquery-ui/datepicker
- *= require jquery-ui/menu
- *= require jquery-ui/selectmenu
- *= require jquery-ui/tabs
- *= require jquery-ui/tooltip
-
  *= require jquery.datetimepicker
 */
 
-/******************************
-* Fonts
-*******************************/
- 
-/******************************
-* Settings
-*******************************/
- 
-	@import "foundation/components/global";
-  @import "foundation_and_overrides";
-	// @import "settings";
-	// @import "foundation_settings";
- 
-/******************************
-* Dependencies
-*******************************/
-
-	// @import 'foundation-icons';
-  @import "font-awesome-sprockets";
-  @import "font-awesome";
-
-/******************************
-* Bases
-*******************************/
- 
-	// @import "bases/elements";
- 
-/******************************
-* Layouts
-*******************************/
- 
-	@import "layouts/layout_application";
-
-/******************************
-* Models
-*******************************/
-
-  @import "models/invitations";
-  @import "models/teams";
- 
-/******************************
-* Modules
-*******************************/
- 
-  @import "modules/navbar";
-// @import "modules/footers";
- 
-/******************************
-* Non-modular
-*******************************/
-
-
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script:700);

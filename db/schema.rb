@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108024702) do
+ActiveRecord::Schema.define(version: 20141110152848) do
 
   create_table "invitations", force: true do |t|
     t.string   "email"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20141108024702) do
 
   add_index "rosters", ["team_id"], name: "index_rosters_on_team_id"
   add_index "rosters", ["user_id"], name: "index_rosters_on_user_id"
+
+  create_table "settings", force: true do |t|
+    t.string   "var",         null: false
+    t.text     "value"
+    t.integer  "target_id",   null: false
+    t.string   "target_type", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
 
   create_table "tasks", force: true do |t|
     t.integer  "team_id"

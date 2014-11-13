@@ -1,18 +1,19 @@
 var id = '<%= @task_id %>';
 var address = '.' + '<%= @task_change %>' + '-tasks-list'
 
+var alertStyle = '<%= escape_javascript( session[:alert_style] ) %>' ;
+var alertLength = '<%= session[:alert_length] %>' ;
+var alertType = '<%= escape_javascript( flash[:notice] ? "success" : "error" ) %>' ;
+var alertMessage = '<%= escape_javascript raw( flash[:notice] || flash[:alert] ) %>' ; 
+var alertPlacement = $('.task-list-element-'+id).parent() ;
+
 <% if @task_success %>
 
-	$('.task-list-element-'+id).replaceWith('<div  data-alert class="alert-box info radius"> <%= escape_javascript( flash[:notice] )%> </div>');
+	$('.task-list-element-'+id).remove() ;
 
 	$(address).append( '<%= escape_javascript(render :partial => "tasks/individual_task", :locals => { :@task => @task, :@state => @task_change.to_sym } )%> ');
 	
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
-
-	<% else %>
-
-	$('.task-list-element-'+id).before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
-
 <% end %>
+
+checkChildren(address);
+addAlert( alertStyle, alertType, alertMessage, alertPlacement, alertLength )

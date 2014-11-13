@@ -1,10 +1,8 @@
-<% if !@pending_invites.empty? %>
-  <div class="small-8 small-centered large-centered columns pending-invites-panel pending-invites" id="pending-invites">
-		<ul class="pending-invites-list no-bullet"> Your pending teams:
-			<% @pending_invites.each do |invite| %>
-				<%= render :partial=> '/invitations/individual_pending_invites', 
-				:locals => { :@invite => invite } %> 
-			<% end %>
-		</ul>
-	</div>
-<% end %>
+<div class="small-8 small-centered large-centered columns pending-invites-panel pending-invites <%= @pending_invites.empty? ? 'hide' : 'show' %>" id="pending-invites">
+	<ul class="list pending-invites-list no-bullet"> Your pending invitations:
+		<% @pending_invites.each do |invite| %>
+			<%= render :partial=> '/invitations/individual_pending_invites', 
+			:locals => { :@invite => invite } %> 
+		<% end %>
+	</ul>
+</div>

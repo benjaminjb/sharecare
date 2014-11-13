@@ -31,11 +31,14 @@ gem 'foundation-rails'
 gem 'font-awesome-sass'
 
 # For behavior
-gem 'best_in_place'
 gem 'jquery-ui-rails'
 gem 'jquery-datetimepicker-rails'
 gem 'sweet-alert'
 gem 'ledermann-rails-settings'
+
+# For behavior
+# Removed because I'm not currently using it for in-place editing
+# gem 'best_in_place'
 
 # For utility
 gem 'require_all'

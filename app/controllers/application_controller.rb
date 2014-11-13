@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
     # flash.discard
   # end
 
-
   protected
   def discard_flash_if_xhr
     flash.discard if request.xhr?

@@ -1,21 +1,23 @@
+var address = '.active-tasks-list'
+
+var alertStyle = '<%= escape_javascript( session[:alert_style] ) %>' ;
+var alertLength = '<%= session[:alert_length] %>' ;
+var alertType = '<%= escape_javascript( flash[:notice] ? "success" : "error" ) %>' ;
+var alertMessage = '<%= escape_javascript raw( flash[:notice] || flash[:alert] ) %>' ; 
+
 <% if @task %>
 
-	$('.active-tasks-list').append('<%= escape_javascript(render :partial => "individual_task", :locals => { :task => @task, :@state => :active } ) %>');
+	$(address).append('<%= escape_javascript(render :partial => "individual_task", :locals => { :task => @task, :@state => :active } ) %>');
 
 	$('#task_task, #task_startime, #task_endtime, #task_notes').val('');
 
-	$('.active-tasks-list').after('<div data-alert class="alert-box info radius"><%= escape_javascript( flash[:notice] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+	var alertPlacement = '.active-tasks-list'
 
 <% else %>
-
-	$('#task_task').before('<div data-alert class="alert-box alert radius"><%= escape_javascript( flash[:alert] ) %> </div> ');
-
-	$( '.alert-box' ).delay(1500).slideUp('slow', function() {});
+	
+	var alertPlacement = '#task_task'
 
 <% end %>
 
-$('#task_task').focus(function() {
-  $( '.alert-box' ).slideUp('slow', function() {});
-});
+checkChildren(address);
+addAlert( alertStyle, alertType, alertMessage, alertPlacement, alertLength )

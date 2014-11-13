@@ -110,14 +110,14 @@ Invitation.create([
     # open: true
   },
   {
-    email: 'nick.mcdonnough@yahoo.com',
-    team_id: 2
+    email: 'flip.stewart@yahoo.com',
+    team_id: 1
     # ,
     # open: true
   },
   {
-    email: 'nick.mcdonnough@yahoo.com',
-    team_id: 3
+    email: 'flip.stewart@yahoo.com',
+    team_id: 4
     # ,
     # open: true
   }
@@ -228,8 +228,8 @@ Task.create([
     task: "Lunch walk",
     completed: false,
     notes: "",
-    starttime: DateTime.parse('November 13th 2014 08:00:00 AM'),
-    endtime: DateTime.parse('November 13th 2014 08:30:00 AM')
+    starttime: DateTime.parse('November 13th 2014 01:00:00 PM'),
+    endtime: DateTime.parse('November 13th 2014 01:30:00 PM')
   },
   {
     team_id: 4,
@@ -237,8 +237,8 @@ Task.create([
     task: "Evening walk",
     completed: false,
     notes: "",
-    starttime: DateTime.parse('November 13th 2014 08:00:00 AM'),
-    endtime: DateTime.parse('November 13th 2014 08:30:00 AM')
+    starttime: DateTime.parse('November 13th 2014 08:00:00 PM'),
+    endtime: DateTime.parse('November 13th 2014 08:30:00 PM')
   },
   {
     team_id: 4, 
@@ -253,16 +253,16 @@ Task.create([
     task: "Lunch walk",
     completed: false,
     notes: "",
-    starttime: DateTime.parse('November 14th 2014 08:00:00 AM'),
-    endtime: DateTime.parse('November 14th 2014 08:30:00 AM')
+    starttime: DateTime.parse('November 14th 2014 01:00:00 PM'),
+    endtime: DateTime.parse('November 14th 2014 01:30:00 PM')
   },
   {
     team_id: 4, 
     task: "Evening walk",
     completed: false,
     notes: "",
-    starttime: DateTime.parse('November 14th 2014 08:00:00 AM'),
-    endtime: DateTime.parse('November 14th 2014 08:30:00 AM')
+    starttime: DateTime.parse('November 14th 2014 08:00:00 PM'),
+    endtime: DateTime.parse('November 14th 2014 08:30:00 PM')
   },
   {
     team_id: 4, 
@@ -272,5 +272,11 @@ Task.create([
     notes: "",
     starttime: DateTime.parse('November 24th 2014 00:00:01 AM'),
     endtime: DateTime.parse('November 24th 2014 11:59:00 PM')
+  },
+  {
+    team_id: 1,
+    task: "Buy Hill's Science Diet Lamb & Rice Small Bites",
+    completed: false,
+    endtime: DateTime.parse('December 31st 2014 11:59:00 PM') 
   }
 ])

@@ -7,11 +7,13 @@ module Sharecare
           return { success?: false, :access => false, message: "You don't have access to that team."}
         end
 
-        your_claimed_tasks = team.tasks.select {|task| task.user_id == user.id && !task.completed}
-        overdue_tasks = team.tasks.select {|task| task.endtime < Time.now && !task.completed}
-        others_claimed_tasks = team.tasks.select {|task| task.user_id && !task.completed} 
-        active_tasks = team.tasks.select {|task| !task.completed } - (your_claimed_tasks + others_claimed_tasks + overdue_tasks)
-        completed_tasks = team.tasks.select {|task| task.completed}
+        # separate out claimed and claimed but overdue
+
+        your_claimed_tasks = team.tasks.select {|task| task.user_id == user.id && !task.completed}.sort_by{ |task| task.endtime }
+        overdue_tasks = team.tasks.select {|task| task.endtime < Time.now && !task.completed}.sort_by{ |task| task.endtime } - your_claimed_tasks
+        others_claimed_tasks = team.tasks.select {|task| task.user_id && task.user_id != user.id && !task.completed}.sort_by{ |task| task.endtime } - overdue_tasks 
+        active_tasks = team.tasks.select {|task| !task.completed }.sort_by{ |task| task.endtime } - (your_claimed_tasks + others_claimed_tasks + overdue_tasks)
+        completed_tasks = team.tasks.select {|task| task.completed}.sort_by{ |task| task.completed_at }
 
         return { success?: true, 
           team: team,

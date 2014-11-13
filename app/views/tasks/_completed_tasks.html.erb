@@ -1,8 +1,8 @@
-<div class="box small-10 small-centered large-centered columns completed-tasks" id="completed-tasks">
+<div class="small-10 small-centered large-centered columns completed-tasks <%= @individual_completed_tasks.empty? ? 'hide' : 'show' %>" id="completed-tasks">
 	<ul class="list completed-tasks-list no-bullet">Completed Tasks:
-		<% @individual_completed_tasks.each do |task| %>
-			<%= render :partial=> '/tasks/individual_task', 
-			:locals => { :@task => task, :@state => :completed } %> 
-		<% end %>
+	<% @individual_completed_tasks.each do |task| %>
+		<%= render :partial=> '/tasks/individual_task', 
+		:locals => { :@task => task, :@state => :completed } %> 
+	<% end %>
 	</ul>
 </div>

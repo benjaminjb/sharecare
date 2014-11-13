@@ -10,9 +10,9 @@
       <%= label_tag('task[endtime]', "Deadline:") %>
       <%= datetime_field_tag('task[endtime]', nil, class: "datetimepicker-inputs") %>
       
-      <%= label_tag('task[notes]', "Notes:") %>
-      <%= text_area_tag('task[notes]', '', size: "24x3") %>
-
+<!--       <%#= label_tag('task[notes]', "Notes:") %>
+      <%#= text_area_tag('task[notes]', '', size: "24x3") %>-->
+      
       <%= hidden_field_tag "task[team_id]", "#{params[:id]}" %>
 
       <%= button_tag(type: "submit", class: "button") do %>
